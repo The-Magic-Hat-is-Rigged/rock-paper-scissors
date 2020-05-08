@@ -1,0 +1,27 @@
+#compiled class file
+*.class
+
+#intellij internal files
+.idea/
+*.iml
+
+#log file
+*.log
+
+#BlueJ files
+*.ctxt
+
+#mobile tools for java
+.mtj.tmp/
+
+#package files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+#vm crash logs
+hs_err_pid*
