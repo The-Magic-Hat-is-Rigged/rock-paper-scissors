@@ -8,6 +8,7 @@
 package com.magichatisrigged.javaproject;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -24,6 +25,8 @@ public enum MoveSelection {
     // These contain the available selections for the player and computer in each game.
     ROCK, PAPER, SCISSORS, LIZARD, SPOCK;
 
+    //DONE: declare losesTo rules; defines what each "character" (avatar?) loses to, naturally, at birth
+    //like pre-determined natural selection
     //declare loses to list
     public List<MoveSelection> losesTo;
 
@@ -33,11 +36,27 @@ public enum MoveSelection {
 
     //static loses to list, returns rules for who loses to whom
     static {
-        SCISSORS.losesTo = Arrays.asList(ROCK, SPOCK);
         ROCK.losesTo = Arrays.asList(PAPER, SPOCK);
         PAPER.losesTo = Arrays.asList(SCISSORS, LIZARD);
-        SPOCK.losesTo = Arrays.asList(PAPER, LIZARD);
+        SCISSORS.losesTo = Arrays.asList(ROCK, SPOCK);
         LIZARD.losesTo = Arrays.asList(SCISSORS, ROCK);
+        SPOCK.losesTo = Arrays.asList(PAPER, LIZARD);
+    }
+
+    //Done: create tiesWith list
+    //declare ties to list
+    public List<MoveSelection> tiesWith;
+
+    public boolean tiesWith(MoveSelection other) {
+        return tiesWith.contains(other);
+    }
+
+    static {
+        ROCK.tiesWith = Collections.singletonList(ROCK);
+        PAPER.losesTo = Collections.singletonList(PAPER);
+        SCISSORS.tiesWith = Collections.singletonList(SCISSORS);
+        LIZARD.losesTo = Collections.singletonList(LIZARD);
+        SPOCK.losesTo = Collections.singletonList(SPOCK);
     }
 
 }
