@@ -43,7 +43,7 @@ public enum MoveSelection {
         SPOCK.losesTo = Arrays.asList(PAPER, LIZARD);
     }
 
-    //ToDo: create tiesWith list
+    //Done: create tiesWith list
     //declare ties to list
     public List<MoveSelection> tiesWith;
 
