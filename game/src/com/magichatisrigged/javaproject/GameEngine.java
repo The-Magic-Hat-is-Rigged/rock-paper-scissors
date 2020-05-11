@@ -7,6 +7,8 @@ import java.util.Scanner;
 public class GameEngine {
 
     private static final int STARTINGLIVES = 3;
+    private static final int MIN_NUM_OF_GAMES = 1;
+    private static final int MAX_NUM_OF_GAMES = 50;
 
     private int numberOfGames;
     public Map<String, Integer> scoreBoard = new HashMap<>();
@@ -18,6 +20,13 @@ public class GameEngine {
         gameIntroduction.basicGameInformation();
     }
 
+    /*
+     * private method for setting the number of base games to be played in beginning
+     * this can be between 1 and 50 games (although, total play count can exceed this in the event of ties).
+     * set between MIN_NUM_OF_GAMES && MAX_NUM_OF_GAMES
+     *
+     * this method is called by the playGame method, set to private because only the play came method can see it.
+     */
     private void enterNumberOfGames() {
 
         // This will ask how many games the user would like to play.
@@ -27,7 +36,7 @@ public class GameEngine {
         int userInputConvertedFromString = Integer.parseInt(userInput.nextLine());
 
         // This will test that the input was valid.
-        if (userInputConvertedFromString > 0) {
+        if (userInputConvertedFromString >= MIN_NUM_OF_GAMES && userInputConvertedFromString <= MAX_NUM_OF_GAMES) {
             this.numberOfGames = userInputConvertedFromString;
             System.out.println("You will play " + getNumberOfGames() + " number of games.");
         }
@@ -44,13 +53,13 @@ public class GameEngine {
          * then afford them the opportunity to select a proper playcount
          */
         //TODO: explore new way to catch illegal playcount, so instead of breaking game, player is prompted to select a proper playcount
-//        try {
+//        do {
 //            if (userInputConvertedFromString > 0) {
 //            this.numberOfGames = userInputConvertedFromString;
 //            System.out.println("You will play " + getNumberOfGames() + " number of games.");
 //        }
 //        }
-//        catch (Exception e) {
+//        while (Exception e) {
 //            System.out.println("You selected an invalid number of games. \n" +
 //                                               "Entry must be a positive number.");
 //            continue;
