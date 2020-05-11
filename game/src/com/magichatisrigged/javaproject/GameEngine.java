@@ -47,14 +47,34 @@ public class GameEngine {
         humanPlayer.enterName();
         computerPlayer.enterName();
 
-        scoreBoard.put(humanPlayer.getName(), STARTINGLIVES);
-        scoreBoard.put(computerPlayer.getName(), STARTINGLIVES);
+        scoreBoard.put("Player Name: " + humanPlayer.getName(), getNumberOfGames());
+        scoreBoard.put("Computer Name: " + computerPlayer.getName(), getNumberOfGames());
 
         for (int i = 0; i < getNumberOfGames(); i++) {
             System.out.println("----- Game Number: " + gameDisplayCounter + " -----");
             humanPlayer.selectMove();
             computerPlayer.selectMove();
             gameDisplayCounter++;
+
+            // TODO: See if this can be converted to a Switch Statement later.
+            if (humanPlayer.getPlayerMove().losesTo(computerPlayer.getComputerMove())) {
+                System.out.println("Computer Wins!");
+                scoreBoard.replace("Player Name: " + humanPlayer.getName(), STARTINGLIVES, STARTINGLIVES - 1);
+                System.out.println(scoreBoard);
+            }
+
+            else if (computerPlayer.getComputerMove().losesTo(humanPlayer.getPlayerMove())) {
+                System.out.println("Human Wins!");
+                scoreBoard.replace("Player Name: " + computerPlayer.getName(), STARTINGLIVES, STARTINGLIVES - 1);
+                System.out.println(scoreBoard);
+            }
+
+            else {
+                System.out.println("Tie! Go again.");
+                System.out.println(scoreBoard);
+            }
+
+
         }
     }
 
