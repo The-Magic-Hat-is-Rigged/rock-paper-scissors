@@ -18,7 +18,7 @@ public class GameEngine {
         gameIntroduction.basicGameInformation();
     }
 
-    private void enterNumberOfGames() {
+    public void enterNumberOfGames() {
 
         // This will ask how many games the user would like to play.
         Scanner userInput = new Scanner(System.in);
@@ -94,8 +94,6 @@ public class GameEngine {
                 System.out.println("Tie! Go again.");
                 System.out.println(scoreBoard);
             }
-
-
         }
     }
 
