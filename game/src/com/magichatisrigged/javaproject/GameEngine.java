@@ -93,6 +93,7 @@ public class GameEngine {
             else {
                 System.out.println("Tie! Go again.");
                 System.out.println(scoreBoard);
+                numberOfGames++;
             }
         }
     }
