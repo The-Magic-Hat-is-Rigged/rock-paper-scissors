@@ -10,16 +10,20 @@ public class GameEngine {
 
     private int numberOfGames;
     public Map<String, Integer> scoreBoard = new HashMap<>();
-    public int gameDisplayCounter = 1;
+    private int gameDisplayCounter = 1;
 
+    private void introductionToTheGame() {
+        GameIntroduction gameIntroduction = new GameIntroduction();
+        gameIntroduction.welcomeMessage();
+        gameIntroduction.basicGameInformation();
+    }
 
-    public void enterNumberOfGames() {
+    private void enterNumberOfGames() {
 
         // This will ask how many games the user would like to play.
         Scanner userInput = new Scanner(System.in);
         System.out.println("How many games would you like to play?");
 
-        // Rename and refactor this later.
         int userInputConvertedFromString = Integer.parseInt(userInput.nextLine());
 
         // This will test that the input was valid.
@@ -55,19 +59,43 @@ public class GameEngine {
     }
 
     public void playGame() {
+
+        introductionToTheGame();
+        enterNumberOfGames();
+
         HumanPlayer humanPlayer = new HumanPlayer();
         ComputerPlayer computerPlayer = new ComputerPlayer();
         humanPlayer.enterName();
         computerPlayer.enterName();
 
-        scoreBoard.put(humanPlayer.getName(), STARTINGLIVES);
-        scoreBoard.put(computerPlayer.getName(), STARTINGLIVES);
+        scoreBoard.put("Player Name: " + humanPlayer.getName(), getNumberOfGames());
+        scoreBoard.put("Computer Name: " + computerPlayer.getName(), getNumberOfGames());
 
         for (int i = 0; i < getNumberOfGames(); i++) {
             System.out.println("----- Game Number: " + gameDisplayCounter + " -----");
             humanPlayer.selectMove();
             computerPlayer.selectMove();
             gameDisplayCounter++;
+
+            // TODO: See if this can be converted to a Switch Statement later.
+            if (humanPlayer.getPlayerMove().losesTo(computerPlayer.getComputerMove())) {
+                System.out.println("Computer Wins!");
+                scoreBoard.replace("Player Name: " + humanPlayer.getName(), STARTINGLIVES, STARTINGLIVES - 1);
+                System.out.println(scoreBoard);
+            }
+
+            else if (computerPlayer.getComputerMove().losesTo(humanPlayer.getPlayerMove())) {
+                System.out.println("Human Wins!");
+                scoreBoard.replace("Player Name: " + computerPlayer.getName(), STARTINGLIVES, STARTINGLIVES - 1);
+                System.out.println(scoreBoard);
+            }
+
+            else {
+                System.out.println("Tie! Go again.");
+                System.out.println(scoreBoard);
+            }
+
+
         }
     }
 
