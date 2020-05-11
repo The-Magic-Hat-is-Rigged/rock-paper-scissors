@@ -31,6 +31,27 @@ public class GameEngine {
             throw new IllegalArgumentException("You selected an invalid number of games. \n" +
                                                "Entry must be a positive number.");
         }
+
+        /*
+         * experiment for implementing new approach to game play.
+         * in current version, if you select a wrong play count for the game,
+         * you essentially break the game.
+         * instead, we should notify the player that the playcount they selected is improper,
+         * then afford them the opportunity to select a proper playcount
+         */
+        //TODO: eplore new way to catch illegal playcount, so instead of breaking game, player is prompted to select a proper playcount
+//        try {
+//            if (userInputConvertedFromString > 0) {
+//            this.numberOfGames = userInputConvertedFromString;
+//            System.out.println("You will play " + getNumberOfGames() + " number of games.");
+//        }
+//        }
+//        catch (Exception e) {
+//            System.out.println("You selected an invalid number of games. \n" +
+//                                               "Entry must be a positive number.");
+//            continue;
+//        }
+
     }
 
     public void playGame() {
