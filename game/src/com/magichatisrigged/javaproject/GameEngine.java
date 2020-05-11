@@ -18,7 +18,7 @@ public class GameEngine {
         gameIntroduction.basicGameInformation();
     }
 
-    public void enterNumberOfGames() {
+    private void enterNumberOfGames() {
 
         // This will ask how many games the user would like to play.
         Scanner userInput = new Scanner(System.in);
