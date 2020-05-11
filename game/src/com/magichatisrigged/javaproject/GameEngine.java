@@ -10,16 +10,20 @@ public class GameEngine {
 
     private int numberOfGames;
     public Map<String, Integer> scoreBoard = new HashMap<>();
-    public int gameDisplayCounter = 1;
+    private int gameDisplayCounter = 1;
 
+    private void introductionToTheGame() {
+        GameIntroduction gameIntroduction = new GameIntroduction();
+        gameIntroduction.welcomeMessage();
+        gameIntroduction.basicGameInformation();
+    }
 
-    public void enterNumberOfGames() {
+    private void enterNumberOfGames() {
 
         // This will ask how many games the user would like to play.
         Scanner userInput = new Scanner(System.in);
         System.out.println("How many games would you like to play?");
 
-        // Rename and refactor this later.
         int userInputConvertedFromString = Integer.parseInt(userInput.nextLine());
 
         // This will test that the input was valid.
@@ -34,6 +38,10 @@ public class GameEngine {
     }
 
     public void playGame() {
+
+        introductionToTheGame();
+        enterNumberOfGames();
+
         HumanPlayer humanPlayer = new HumanPlayer();
         ComputerPlayer computerPlayer = new ComputerPlayer();
         humanPlayer.enterName();
