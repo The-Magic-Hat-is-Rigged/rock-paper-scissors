@@ -1,7 +1,5 @@
 package com.magichatisrigged.javaproject;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class GameEngine {
@@ -88,6 +86,7 @@ public class GameEngine {
             // The only other option besides win or lose would be tie, in which case no lives will be taken from either the human or computer.
             else {
                 System.out.println("Tie! Go again.");
+                numberOfGames++;
             }
         }
 
