@@ -39,7 +39,7 @@ public class GameEngine {
          * instead, we should notify the player that the playcount they selected is improper,
          * then afford them the opportunity to select a proper playcount
          */
-        //TODO: eplore new way to catch illegal playcount, so instead of breaking game, player is prompted to select a proper playcount
+        //TODO: explore new way to catch illegal playcount, so instead of breaking game, player is prompted to select a proper playcount
 //        try {
 //            if (userInputConvertedFromString > 0) {
 //            this.numberOfGames = userInputConvertedFromString;
