@@ -68,9 +68,11 @@ public class HumanPlayer extends Player {
                     isValid = true;
                     HumanPlayer.playerMove = MoveSelection.SCISSORS;
                     System.out.println(printSelectedMove + getPlayerMove());
+                } else {
+                    throw new InvalidMoveSelectionException();
                 }
-            } catch (IllegalArgumentException e) {
-                System.out.println("Invalid move. " + printValidMoves);
+            } catch (InvalidMoveSelectionException e) {
+                System.out.println(e.getMessage());
             }
         }
     }
