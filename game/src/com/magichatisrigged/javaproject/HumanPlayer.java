@@ -30,40 +30,24 @@ public class HumanPlayer extends Player {
         // Call printValidMoves
         System.out.println("Choose Rock, Paper, or Scissors");
 
-        // This will read the user input and convert whatever they entered to uppercase to match the enum definition.
-        String moveSelectionString = userMove.nextLine().toUpperCase();
-
-        // Creates boolean validator for following while loop. this is to validate user input to only enter valid enums
-        boolean isValid = false;
-
-        // Iterate through the user's moveSelection input
-        // If it's rock, paper or scissors, run it and exit loop, if not, ask for a proper move again
-        while (!(isValid))  {
-            try {
-                MoveSelection moveSelection = MoveSelection.valueOf(moveSelectionString);
-
-                if (moveSelection.equals(MoveSelection.ROCK)) {
-                    this.playerMove = MoveSelection.ROCK;
-                    isValid = true;
-                }
-
-                else if (moveSelection.equals(MoveSelection.PAPER)) {
-                    this.playerMove = MoveSelection.PAPER;
-                    isValid = true;
-                }
-
-                else if (moveSelection.equals(MoveSelection.SCISSORS)) {
-                    this.playerMove = MoveSelection.SCISSORS;
-                    isValid = true;
-                }
-
-                System.out.println("The move you selected is: " + getPlayerMove());
-            }
-
-            catch (IllegalArgumentException e) {
-                System.out.println("Invalid move. Choose Rock, Paper, or Scissors");
+        // This will parse the user input and verify it was a valid selection.
+        switch (userMove.nextLine().toUpperCase()) {
+            case "ROCK":
+                this.playerMove = MoveSelection.ROCK;
+                System.out.println(getName() + " picked " + getPlayerMove());
                 break;
-            }
+            case "PAPER":
+                this.playerMove = MoveSelection.PAPER;
+                System.out.println(getName() + " picked " + getPlayerMove());
+                break;
+            case "SCISSORS":
+                this.playerMove = MoveSelection.SCISSORS;
+                System.out.println(getName() + " picked " + getPlayerMove());
+                break;
+            default:
+                System.out.println("Please try again.");
+                selectMove();
+                break;
         }
     }
 
