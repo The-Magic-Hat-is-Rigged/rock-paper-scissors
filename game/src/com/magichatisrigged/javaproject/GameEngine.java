@@ -10,13 +10,11 @@ import java.util.Scanner;
  */
 public class GameEngine {
 
-    private static final int STARTING_LIVES = 3;
-    public static final int MIN_NUM_OF_GAMES = 1;
-    public static final int MAX_NUM_OF_GAMES = 50;
+    public static final int MIN_GAME_ROUNDS = 1;
+    public static final int MAX_GAME_ROUNDS = 50;
 
-
-    private int numberOfGames;
-    private int gameDisplayCounter = 1;
+    private int numberOfGameRounds;
+    private int gameRoundCounter = 1;
 
     private void introductionToTheGame() {
         GameIntroduction gameIntroduction = new GameIntroduction();
@@ -24,23 +22,22 @@ public class GameEngine {
         gameIntroduction.basicGameInformation();
     }
 
-
     /*
      * private method for setting the number of games to be played
-     * This integer can be between 1 and 50 games (although, total play count can exceed this in the event of ties).
-     * set between MIN_NUM_OF_GAMES && MAX_NUM_OF_GAMES
+     * This integer can be between 1 and 50 game rounds (although, total play count can exceed this in the event of ties).
+     * set between MIN_GAME_ROUNDS && MAX_GAME_ROUNDS
      * this method is called by the playGame method, set to private because only the play came method can see it.
      */
-    private void enterNumberOfGames() {
+    private void enterNumberOfGameRounds() {
+
+        // This will ask the user how many rounds per game they would like to play.
+        System.out.println("How many rounds would you like to play this game? \n");
 
         // This will ask how many games the user would like to play.
         Scanner userInput = new Scanner(System.in);
-        //create reusable string for later versions of instantiating this game
-        String printNumGames = "How many games would you like to play? \n";
-        //create reusable string to return when user inputs invalid number of games
-        String printValidNumRange = "Please enter a number between: " + MIN_NUM_OF_GAMES + " and " + MAX_NUM_OF_GAMES + ".";
 
-        System.out.println(printNumGames);
+        //create reusable string to return when user inputs invalid number of rounds
+        String printValidNumRange = "Please enter a number between: " + MIN_GAME_ROUNDS + " and " + MAX_GAME_ROUNDS + ".";
 
         boolean isValid = false;
 
@@ -49,10 +46,10 @@ public class GameEngine {
             System.out.println(printValidNumRange);
             try {
                 int userInputConvertedFromString = Integer.parseInt(userInput.nextLine());
-                if (userInputConvertedFromString >= MIN_NUM_OF_GAMES && userInputConvertedFromString <= MAX_NUM_OF_GAMES) {
+                if (userInputConvertedFromString >= MIN_GAME_ROUNDS && userInputConvertedFromString <= MAX_GAME_ROUNDS) {
                     isValid = true;
-                    numberOfGames = userInputConvertedFromString;
-                    System.out.println("You will play " + getNumberOfGames() + " games.");
+                    numberOfGameRounds = userInputConvertedFromString;
+                    System.out.println("You will play " + getNumberOfGameRounds() + " rounds this game.");
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Invalid number. " + printValidNumRange);
@@ -63,7 +60,7 @@ public class GameEngine {
     public void playGame() {
 
         introductionToTheGame();
-        enterNumberOfGames();
+        enterNumberOfGameRounds();
 
         HumanPlayer humanPlayer = new HumanPlayer();
         ComputerPlayer computerPlayer = new ComputerPlayer();
@@ -71,63 +68,62 @@ public class GameEngine {
         computerPlayer.enterName();
 
         // The number of lives for both the human and the computer will be based on the user provided input above.
-        int humanLives = getNumberOfGames();
-        int computerLives = getNumberOfGames();
+        int humanWinCounter = 0;
+        int computerWinCounter = 0;
 
         // This will loop "n" times based on the number of games the player selected at the start.
-        for (int i = 0; i < getNumberOfGames(); i++) {
+        for (int i = 0; i < getNumberOfGameRounds(); i++) {
 
             // This will display which game round is currently in play.
-            System.out.println("----- Game Number: " + gameDisplayCounter + " -----");
+            System.out.println("----- Game Number: " + gameRoundCounter + " -----");
 
             // These methods will prompt the user and computer to make their moves.
             humanPlayer.selectMove();
             computerPlayer.selectMove();
 
-            //String message to report current lives after each round of game
-            String currentLives = humanPlayer.getName() + " Lives: " + humanLives + "\n" +
-                    computerPlayer.getName() + " Lives: " + computerLives;
-
-            // TODO: See if this can be converted to a Switch Statement later.
-
             // This if block will execute if the human player loses the round and take one away from the humans life pool.
             if (humanPlayer.getPlayerMove().losesTo(computerPlayer.getComputerMove())) {
-                System.out.println(computerPlayer.getName() + " wins round " + gameDisplayCounter + "!");
-                humanLives--;
+                System.out.println(computerPlayer.getName() + " wins round " + gameRoundCounter + "!");
+                computerWinCounter++;
 
                 // This will display the current lives for both human and computer.
-                System.out.println(currentLives);
+                scoreBoardDisplay(humanPlayer, computerPlayer, humanWinCounter, computerWinCounter);
             }
 
             // This if block will execute if the computer player loses the round and take one away from the computer life pool.
             else if (computerPlayer.getComputerMove().losesTo(humanPlayer.getPlayerMove())) {
-                System.out.println(humanPlayer.getName() + " wins round " + gameDisplayCounter + "!");
-                computerLives--;
+                System.out.println(humanPlayer.getName() + " wins round " + gameRoundCounter + "!");
+                humanWinCounter++;
 
                 // This will display the current lives for both human and computer.
-                System.out.println(currentLives);
+                scoreBoardDisplay(humanPlayer, computerPlayer, humanWinCounter, computerWinCounter);
             }
 
             // The only other option besides win or lose would be tie, in which case no lives will be taken from either the human or computer.
             else {
                 System.out.println("Tie! Go again.");
-                numberOfGames++;
+                numberOfGameRounds++;
             }
 
             // This will increase the game round counter by one.
-            gameDisplayCounter++;
+            gameRoundCounter++;
         }
 
-        // This if else statement will display the final winner of the games based on who has more lives at the end.
-        if (humanLives > computerLives) {
+        // This if else statement will display the final winner of the game based on who has won more rounds.
+        if (humanWinCounter > computerWinCounter) {
             System.out.println(humanPlayer.getName() + " wins the Game!!!!!");
         } else {
             System.out.println(computerPlayer.getName() + " wins the Game!!!!!");
         }
     }
 
+    private void scoreBoardDisplay(HumanPlayer humanPlayer, ComputerPlayer computerPlayer, int humanWinCounter, int computerWinCounter) {
+        System.out.println(humanPlayer.getName() + " has " + humanWinCounter + " wins so far.");
+        System.out.println(computerPlayer.getName() + " has " + computerWinCounter + " wins so far.");
+    }
+
     // Public getter for the number of games.
-    public int getNumberOfGames() {
-        return numberOfGames;
+    public int getNumberOfGameRounds() {
+        return numberOfGameRounds;
     }
 }
