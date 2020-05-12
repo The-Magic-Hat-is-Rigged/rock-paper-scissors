@@ -1,4 +1,4 @@
-package com.magichatisrigged.javaproject;
+package com.magichatisrigged.javaproject.enginefiles;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,7 @@
-package com.magichatisrigged.javaproject;
+package com.magichatisrigged.javaproject.enginefiles;
+
+import com.magichatisrigged.javaproject.playerfiles.ComputerPlayer;
+import com.magichatisrigged.javaproject.playerfiles.HumanPlayer;
 
 import java.util.Scanner;
 

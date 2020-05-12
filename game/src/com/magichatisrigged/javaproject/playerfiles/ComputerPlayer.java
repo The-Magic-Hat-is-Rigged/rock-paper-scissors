@@ -6,7 +6,9 @@
  *      https://github.com/The-Magic-Hat-is-Rigged/java-project
  */
 
-package com.magichatisrigged.javaproject;
+package com.magichatisrigged.javaproject.playerfiles;
+import com.magichatisrigged.javaproject.enginefiles.MoveSelection;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
