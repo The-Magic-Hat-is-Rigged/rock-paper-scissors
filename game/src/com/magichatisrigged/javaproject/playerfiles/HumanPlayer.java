@@ -1,4 +1,7 @@
-package com.magichatisrigged.javaproject;
+package com.magichatisrigged.javaproject.playerfiles;
+
+import com.magichatisrigged.javaproject.enginefiles.MoveSelection;
+import com.magichatisrigged.javaproject.enginefiles.InvalidMoveSelectionException;
 
 import java.util.Scanner;
 

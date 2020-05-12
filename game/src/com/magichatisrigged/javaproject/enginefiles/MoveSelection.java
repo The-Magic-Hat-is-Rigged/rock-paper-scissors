@@ -6,7 +6,7 @@
  *      https://github.com/The-Magic-Hat-is-Rigged/java-project
  */
 
-package com.magichatisrigged.javaproject;
+package com.magichatisrigged.javaproject.enginefiles;
 
 import java.util.Arrays;
 import java.util.Collections;

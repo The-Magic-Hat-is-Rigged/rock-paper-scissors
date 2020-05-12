@@ -1,4 +1,4 @@
-package com.magichatisrigged.javaproject;
+package com.magichatisrigged.javaproject.enginefiles;
 
 public class InvalidMoveSelectionException extends Exception {
 
