@@ -48,26 +48,6 @@ public class HumanPlayer extends Player {
         validation = userMove.nextLine();
         MoveSelection moveSelection = MoveSelection.valueOf(validation.toUpperCase());
 
-        // This is a validation if/else chain which will assign the user's input to a move or throw an exception.
-//        if (moveSelection.equals(MoveSelection.ROCK)) {
-//            this.playerMove = MoveSelection.ROCK;
-//            System.out.println("The move you selected is: " + getPlayerMove());
-//        }
-//
-//        else if (moveSelection.equals(MoveSelection.PAPER)) {
-//            this.playerMove = MoveSelection.PAPER;
-//            System.out.println("The move you selected is: " + getPlayerMove());
-//        }
-//
-//        else if (moveSelection.equals(MoveSelection.SCISSORS)) {
-//            this.playerMove = MoveSelection.SCISSORS;
-//            System.out.println("The move you selected is: " + getPlayerMove());
-//        }
-//
-//        else {
-//            throw new IllegalArgumentException("Invalid Selection.  Please select Rock, Paper, Scissors.");
-//        }
-
         //creates boolean validator for following while loop. this is to validate user input to only enter valid enums
         boolean isValid = false;
 
