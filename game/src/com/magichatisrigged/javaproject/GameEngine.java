@@ -84,11 +84,11 @@ public class GameEngine {
             humanPlayer.selectMove();
             computerPlayer.selectMove();
 
+            // String message for displaying and reporting win/lose
+            String resultsMessage = computerPlayer.getName() + " wins round "  + gameDisplayCounter + "!";
+
             // This will increase the game round counter by one.
             gameDisplayCounter++;
-
-            // String message for displaying and reporting win/lose
-            String resultsMessage = computerPlayer.getName() + " wins the " + gameDisplayCounter + " round!";
 
             //String message to report current lives after each round of game
             String currentLives = humanPlayer.getName() + " Lives: " + humanLives + "\n" +
