@@ -1,3 +1,11 @@
+/*
+ *      The Magic Hat is Rigged (Team 7)
+ *      Bruce West (https://github.com/BruceBAWest)
+ *      RJ Smith (https://github.com/tupleHunden)
+ *      TLG Learning: Java Mini-Project 1
+ *      https://github.com/The-Magic-Hat-is-Rigged/java-project
+ */
+
 package com.magichatisrigged.javaproject;
 import java.util.ArrayList;
 import java.util.List;
@@ -6,10 +14,6 @@ import java.util.Random;
 public class ComputerPlayer extends Player {
 
     private MoveSelection computerMove;
-
-    public ComputerPlayer() {
-        // no arg
-    }
 
     // This method will randomly select a move for the computer player.
     @Override
@@ -23,6 +27,10 @@ public class ComputerPlayer extends Player {
         computerMoveChoices.add(MoveSelection.ROCK);
         computerMoveChoices.add(MoveSelection.PAPER);
         computerMoveChoices.add(MoveSelection.SCISSORS);
+
+        // The choices for the computer during the advanced game go here.
+        // computerMoveChoices.add(MoveSelection.LIZARD);
+        // computerMoveChoices.add(MoveSelection.SPOCK);
 
         // This loop will assign each ArrayList option an integer and randomly pick one for the computer to play.
         // The computers selection is then assigned to computerMoveSelection and passed below for validation.
@@ -44,9 +52,14 @@ public class ComputerPlayer extends Player {
             this.computerMove = MoveSelection.SCISSORS;
         }
 
-        else {
-            throw new IllegalArgumentException("Invalid Selection.  Please select Rock, Paper, Scissors.");
-        }
+        // These are for the advanced version of the game.
+//        else if (computerMoveSelection.equals(MoveSelection.LIZARD)) {
+//            this.computerMove = MoveSelection.LIZARD;
+//        }
+//
+//        else if (computerMoveSelection.equals(MoveSelection.SPOCK)) {
+//            this.computerMove = MoveSelection.SPOCK;
+//        }
 
         System.out.println("Computer Player picked: " + getComputerMove());
     }
@@ -57,7 +70,6 @@ public class ComputerPlayer extends Player {
     }
 
     public String getName() {
-        // Because why wouldn't Jay be the opponent? :)
         return "Jay";
     }
 
