@@ -42,7 +42,7 @@ public class HumanPlayer extends Player {
         System.out.println(printValidMoves);
 
         //reusable String to notify player move choice
-        String printSelectedMove = "The move you selected is: " + getPlayerMove();
+        String printSelectedMove = "The move you selected is: " ;
 
         // This will read the user input and convert whatever they entered to uppercase to match the enum definition.
         validation = userMove.nextLine();
@@ -51,21 +51,23 @@ public class HumanPlayer extends Player {
         //creates boolean validator for following while loop. this is to validate user input to only enter valid enums
         boolean isValid = false;
 
+        //iterate through the user's moveSelection input
+        //if it's rock, paper or scissors, run it and exit loop, if not, ask for a proper move again
         while (!(isValid)) {
             try {
                 // This is a validation if/else chain which will assign the user's input to a move or throw an exception.
                 if (moveSelection.equals(MoveSelection.ROCK)) {
                     isValid = true;
                     this.playerMove = MoveSelection.ROCK;
-                    System.out.println(printSelectedMove);
+                    System.out.println(printSelectedMove + getPlayerMove());
                 } else if (moveSelection.equals(MoveSelection.PAPER)) {
                     isValid = true;
                     this.playerMove = MoveSelection.PAPER;
-                    System.out.println(printSelectedMove);
+                    System.out.println(printSelectedMove + getPlayerMove());
                 } else if (moveSelection.equals(MoveSelection.SCISSORS)) {
                     isValid = true;
                     this.playerMove = MoveSelection.SCISSORS;
-                    System.out.println(printSelectedMove);
+                    System.out.println(printSelectedMove + getPlayerMove());
                 }
             } catch (IllegalArgumentException e) {
                 System.out.println("Invalid move. " + printValidMoves);
