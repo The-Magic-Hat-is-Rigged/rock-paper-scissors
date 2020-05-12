@@ -34,30 +34,42 @@ public class HumanPlayer extends Player {
 
         // This will prompt the user to select Rock, Paper, or Scissors as their move choice.
         Scanner userMove = new Scanner(System.in);
-        System.out.println("Rock, Paper, or Scissors for this move?");
+
+        //reusable String message prompting valid user moves
+        String printValidMoves = "Choose Rock, Paper, or Scissors";
+
+        //Call printValidMoves
+        System.out.println(printValidMoves);
+
+        //reusable String to notify player move choice
+        String printSelectedMove = "The move you selected is: " + getPlayerMove();
 
         // This will read the user input and convert whatever they entered to uppercase to match the enum definition.
         validation = userMove.nextLine();
         MoveSelection moveSelection = MoveSelection.valueOf(validation.toUpperCase());
 
-        // This is a validation if/else chain which will assign the user's input to a move or throw an exception.
-        if (moveSelection.equals(MoveSelection.ROCK)) {
-            this.playerMove = MoveSelection.ROCK;
-            System.out.println("The move you selected is: " + getPlayerMove());
-        }
+        //creates boolean validator for following while loop. this is to validate user input to only enter valid enums
+        boolean isValid = false;
 
-        else if (moveSelection.equals(MoveSelection.PAPER)) {
-            this.playerMove = MoveSelection.PAPER;
-            System.out.println("The move you selected is: " + getPlayerMove());
-        }
-
-        else if (moveSelection.equals(MoveSelection.SCISSORS)) {
-            this.playerMove = MoveSelection.SCISSORS;
-            System.out.println("The move you selected is: " + getPlayerMove());
-        }
-
-        else {
-            throw new IllegalArgumentException("Invalid Selection.  Please select Rock, Paper, Scissors.");
+        while (!(isValid)) {
+            try {
+                // This is a validation if/else chain which will assign the user's input to a move or throw an exception.
+                if (moveSelection.equals(MoveSelection.ROCK)) {
+                    isValid = true;
+                    this.playerMove = MoveSelection.ROCK;
+                    System.out.println(printSelectedMove);
+                } else if (moveSelection.equals(MoveSelection.PAPER)) {
+                    isValid = true;
+                    this.playerMove = MoveSelection.PAPER;
+                    System.out.println(printSelectedMove);
+                } else if (moveSelection.equals(MoveSelection.SCISSORS)) {
+                    isValid = true;
+                    this.playerMove = MoveSelection.SCISSORS;
+                    System.out.println(printSelectedMove);
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println("Invalid move. " + printValidMoves);
+            }
         }
     }
 
