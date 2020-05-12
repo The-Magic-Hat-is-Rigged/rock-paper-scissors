@@ -78,7 +78,7 @@ public class GameEngine {
         for (int i = 0; i < getNumberOfGameRounds(); i++) {
 
             // This will display which game round is currently in play.
-            System.out.println("----- Game Number: " + gameRoundCounter + " -----");
+            System.out.println("----- Round Number: " + getGameRoundCounter() + " -----");
 
             // These methods will prompt the user and computer to make their moves.
             humanPlayer.selectMove();
@@ -86,7 +86,7 @@ public class GameEngine {
 
             // This if block will execute if the human player loses the round and take one away from the humans life pool.
             if (humanPlayer.getPlayerMove().losesTo(computerPlayer.getComputerMove())) {
-                System.out.println(computerPlayer.getName() + " wins round " + gameRoundCounter + "!");
+                System.out.println(computerPlayer.getName() + " wins round " + getGameRoundCounter() + "!");
                 computerWinCounter++;
 
                 // This will display the current lives for both human and computer.
@@ -95,7 +95,7 @@ public class GameEngine {
 
             // This if block will execute if the computer player loses the round and take one away from the computer life pool.
             else if (computerPlayer.getComputerMove().losesTo(humanPlayer.getPlayerMove())) {
-                System.out.println(humanPlayer.getName() + " wins round " + gameRoundCounter + "!");
+                System.out.println(humanPlayer.getName() + " wins round " + getGameRoundCounter() + "!");
                 humanWinCounter++;
 
                 // This will display the current lives for both human and computer.
@@ -129,4 +129,10 @@ public class GameEngine {
     public int getNumberOfGameRounds() {
         return numberOfGameRounds;
     }
+
+
+    public int getGameRoundCounter() {
+        return gameRoundCounter;
+    }
+
 }
