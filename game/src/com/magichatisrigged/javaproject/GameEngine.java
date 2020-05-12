@@ -2,6 +2,12 @@ package com.magichatisrigged.javaproject;
 
 import java.util.Scanner;
 
+
+/**
+ * Game is the game engine class for the Rock, Paper, Scissors, Lizard, Spock game.
+ * This game was created by RJ Smith and Bruce West, and is available on Github:
+ *
+ */
 public class GameEngine {
 
     private static final int STARTING_LIVES = 3;
@@ -29,8 +35,9 @@ public class GameEngine {
 
         // This will ask how many games the user would like to play.
         Scanner userInput = new Scanner(System.in);
-
+        //create reusable string for later versions of instantiating this game
         String printNumGames = "How many games would you like to play? \n";
+        //create reusable string to return when user inputs invalid number of games
         String printValidNumRange = "Please enter a number between: " + MIN_NUM_OF_GAMES + " and " + MAX_NUM_OF_GAMES + ".";
 
         System.out.println(printNumGames);
