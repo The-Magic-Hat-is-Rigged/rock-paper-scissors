@@ -30,32 +30,46 @@ public class HumanPlayer extends Player {
         // Call printValidMoves
         System.out.println("Choose Rock, Paper, or Scissors");
 
-        // This will parse the user input and verify it was a valid selection.
-        switch (userMove.nextLine().toUpperCase()) {
-            case "ROCK":
-                this.playerMove = MoveSelection.ROCK;
-                System.out.println(getName() + " picked " + getPlayerMove());
-                break;
-            case "PAPER":
-                this.playerMove = MoveSelection.PAPER;
-                System.out.println(getName() + " picked " + getPlayerMove());
-                break;
-            case "SCISSORS":
-                this.playerMove = MoveSelection.SCISSORS;
-                System.out.println(getName() + " picked " + getPlayerMove());
-                break;
-            default:
-                System.out.println("Please try again.");
-                selectMove();
-                break;
+
+        // Creates boolean validator for following while loop. this is to validate user input to only enter valid enums
+        boolean isValid = false;
+
+        //iterate through the user's moveSelection input
+        //if it's rock, paper or scissors, run it and exit loop, if not, ask for a proper move again
+        while (!(isValid)) {
+            try {
+                // This will parse the user input and verify it was a valid selection.
+                switch (userMove.nextLine().toUpperCase()) {
+                    case "ROCK":
+                        this.playerMove = MoveSelection.ROCK;
+                        System.out.println(getName() + " picked " + getPlayerMove());
+                        isValid = true;
+                        break;
+                    case "PAPER":
+                        this.playerMove = MoveSelection.PAPER;
+                        System.out.println(getName() + " picked " + getPlayerMove());
+                        isValid = true;
+                        break;
+                    case "SCISSORS":
+                        this.playerMove = MoveSelection.SCISSORS;
+                        System.out.println(getName() + " picked " + getPlayerMove());
+                        isValid = true;
+                        break;
+                    default:
+                        throw new InvalidMoveSelectionException();
+                }
+            } catch(InvalidMoveSelectionException e){
+                System.out.println(e.getMessage());
+            }
         }
+
     }
 
-    public MoveSelection getPlayerMove() {
+    public MoveSelection getPlayerMove () {
         return playerMove;
     }
 
-    public String getName() {
+    public String getName () {
         return name;
     }
 }

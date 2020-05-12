@@ -84,12 +84,6 @@ public class GameEngine {
             humanPlayer.selectMove();
             computerPlayer.selectMove();
 
-            // This will increase the game round counter by one.
-            gameDisplayCounter++;
-
-            // String message for displaying and reporting win/lose
-            String resultsMessage = computerPlayer.getName() + " wins the " + gameDisplayCounter + " round!";
-
             //String message to report current lives after each round of game
             String currentLives = humanPlayer.getName() + " Lives: " + humanLives + "\n" +
                     computerPlayer.getName() + " Lives: " + computerLives;
@@ -98,7 +92,7 @@ public class GameEngine {
 
             // This if block will execute if the human player loses the round and take one away from the humans life pool.
             if (humanPlayer.getPlayerMove().losesTo(computerPlayer.getComputerMove())) {
-                System.out.println(resultsMessage);
+                System.out.println(computerPlayer.getName() + " wins round " + gameDisplayCounter + "!");
                 humanLives--;
 
                 // This will display the current lives for both human and computer.
@@ -107,7 +101,7 @@ public class GameEngine {
 
             // This if block will execute if the computer player loses the round and take one away from the computer life pool.
             else if (computerPlayer.getComputerMove().losesTo(humanPlayer.getPlayerMove())) {
-                System.out.println(resultsMessage);
+                System.out.println(humanPlayer.getName() + " wins round " + gameDisplayCounter + "!");
                 computerLives--;
 
                 // This will display the current lives for both human and computer.
@@ -119,6 +113,9 @@ public class GameEngine {
                 System.out.println("Tie! Go again.");
                 numberOfGames++;
             }
+
+            // This will increase the game round counter by one.
+            gameDisplayCounter++;
         }
 
         // This if else statement will display the final winner of the games based on who has more lives at the end.
