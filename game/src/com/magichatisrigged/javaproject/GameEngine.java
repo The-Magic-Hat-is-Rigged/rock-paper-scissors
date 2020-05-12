@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class GameEngine {
 
-    private static final int STARTINGLIVES = 3;
-    private static final int MIN_NUM_OF_GAMES = 1;
-    private static final int MAX_NUM_OF_GAMES = 50;
+    private static final int STARTING_LIVES = 3;
+    public static final int MIN_NUM_OF_GAMES = 1;
+    public static final int MAX_NUM_OF_GAMES = 50;
 
 
     private int numberOfGames;
@@ -18,52 +18,39 @@ public class GameEngine {
         gameIntroduction.basicGameInformation();
     }
 
+
     /*
-     * private method for setting the number of base games to be played in beginning
-     * this can be between 1 and 50 games (although, total play count can exceed this in the event of ties).
+     * private method for setting the number of games to be played
+     * This integer can be between 1 and 50 games (although, total play count can exceed this in the event of ties).
      * set between MIN_NUM_OF_GAMES && MAX_NUM_OF_GAMES
-     *
      * this method is called by the playGame method, set to private because only the play came method can see it.
      */
     private void enterNumberOfGames() {
 
         // This will ask how many games the user would like to play.
         Scanner userInput = new Scanner(System.in);
-        System.out.println("How many games would you like to play?");
 
-        int userInputConvertedFromString = Integer.parseInt(userInput.nextLine());
+        String printNumGames = "How many games would you like to play? \n";
+        String printValidNumRange = "Please enter a number between: " + MIN_NUM_OF_GAMES + " and " + MAX_NUM_OF_GAMES + ".";
 
-        // This will test that the input was valid.
-        if (userInputConvertedFromString >= MIN_NUM_OF_GAMES && userInputConvertedFromString <= MAX_NUM_OF_GAMES) {
-            this.numberOfGames = userInputConvertedFromString;
-            System.out.println("You will play " + getNumberOfGames() + " games.");
+        System.out.println(printNumGames);
+
+        boolean isValid = false;
+
+        //DONE: explore do/while, if/else to set playCount, so instead of breaking game, player is prompted to select a proper playcount
+        while (!(isValid)) {
+            System.out.println(printValidNumRange);
+            try {
+                int userInputConvertedFromString = Integer.parseInt(userInput.nextLine());
+                if (userInputConvertedFromString >= MIN_NUM_OF_GAMES && userInputConvertedFromString <= MAX_NUM_OF_GAMES) {
+                    isValid = true;
+                    numberOfGames = userInputConvertedFromString;
+                    System.out.println("You will play " + getNumberOfGames() + " games.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number. " + printValidNumRange);
+            }
         }
-        else {
-
-            // TODO: Remove this exception since it will crash the game, replace with asking for input again.
-            throw new IllegalArgumentException("You selected an invalid number of games. \n" +
-                                               "Entry must be a positive number.");
-        }
-
-        /*
-         * experiment for implementing new approach to game play.
-         * in current version, if you select a wrong play count for the game,
-         * you essentially break the game.
-         * instead, we should notify the player that the playcount they selected is improper,
-         * then afford them the opportunity to select a proper playcount
-         */
-        //TODO: explore new way to catch illegal playcount, so instead of breaking game, player is prompted to select a proper playcount
-//        do {
-//            if (userInputConvertedFromString > 0) {
-//            this.numberOfGames = userInputConvertedFromString;
-//            System.out.println("You will play " + getNumberOfGames() + " number of games.");
-//        }
-//        }
-//        while (Exception e) {
-//            System.out.println("You selected an invalid number of games. \n" +
-//                                               "Entry must be a positive number.");
-//            continue;
-//        }
 
     }
 
@@ -126,9 +113,7 @@ public class GameEngine {
         // This if else statement will display the final winner of the games based on who has more lives at the end.
         if (humanLives > computerLives) {
             System.out.println(humanPlayer.getName() + " wins the Game!!!!!");
-        }
-
-        else {
+        } else {
             System.out.println(computerPlayer.getName() + " wins the Game!!!!!");
         }
     }
