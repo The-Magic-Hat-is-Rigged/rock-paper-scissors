@@ -58,5 +58,4 @@ public enum MoveSelection {
         LIZARD.losesTo = Collections.singletonList(LIZARD);
         SPOCK.losesTo = Collections.singletonList(SPOCK);
     }
-
 }

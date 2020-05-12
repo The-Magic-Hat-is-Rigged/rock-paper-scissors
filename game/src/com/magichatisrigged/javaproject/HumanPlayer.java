@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class HumanPlayer extends Player {
 
     private String name;
-    private static MoveSelection playerMove;
+    private MoveSelection playerMove;
 
     public HumanPlayer() {
         // No Arg
@@ -32,46 +32,39 @@ public class HumanPlayer extends Player {
 
         String validation;
 
-//        // This will prompt the user to select Rock, Paper, or Scissors as their move choice.
-//        Scanner userMove = new Scanner(System.in);
+        // This will prompt the user to select Rock, Paper, or Scissors as their move choice.
+        Scanner userMove = new Scanner(System.in);
 
-        //reusable String message prompting valid user moves
-        String printValidMoves = "Choose Rock, Paper, or Scissors";
-
-        //Call printValidMoves
-        System.out.println(printValidMoves);
+        // Call printValidMoves
+        System.out.println("Choose Rock, Paper, or Scissors");
 
         //reusable String to notify player move choice
         String printSelectedMove = "The move you selected is: " ;
 
-//        // This will read the user input and convert whatever they entered to uppercase to match the enum definition.
-//        validation = userMove.nextLine();
-//        MoveSelection moveSelection = MoveSelection.valueOf(validation.toUpperCase());
+        // This will read the user input and convert whatever they entered to uppercase to match the enum definition.
+        String moveSelectionString = userMove.nextLine().toUpperCase();
 
-        //creates boolean validator for following while loop. this is to validate user input to only enter valid enums
+        // Creates boolean validator for following while loop. this is to validate user input to only enter valid enums
         boolean isValid = false;
 
         //iterate through the user's moveSelection input
         //if it's rock, paper or scissors, run it and exit loop, if not, ask for a proper move again
         while (!(isValid)) {
-            // This will prompt the user to select Rock, Paper, or Scissors as their move choice.
-            Scanner userMove = new Scanner(System.in);
-            // This will read the user input and convert whatever they entered to uppercase to match the enum definition.
-            validation = userMove.nextLine();
-            MoveSelection moveSelection = MoveSelection.valueOf(validation.toUpperCase());
             try {
+                MoveSelection moveSelection = MoveSelection.valueOf(moveSelectionString);
+
                 // This is a validation if/else chain which will assign the user's input to a move or throw an exception.
                 if (moveSelection.equals(MoveSelection.ROCK)) {
                     isValid = true;
-                    HumanPlayer.playerMove = MoveSelection.ROCK;
+                    this.playerMove = MoveSelection.ROCK;
                     System.out.println(printSelectedMove + getPlayerMove());
                 } else if (moveSelection.equals(MoveSelection.PAPER)) {
                     isValid = true;
-                    HumanPlayer.playerMove = MoveSelection.PAPER;
+                    this.playerMove = MoveSelection.PAPER;
                     System.out.println(printSelectedMove + getPlayerMove());
                 } else if (moveSelection.equals(MoveSelection.SCISSORS)) {
                     isValid = true;
-                    HumanPlayer.playerMove = MoveSelection.SCISSORS;
+                    this.playerMove = MoveSelection.SCISSORS;
                     System.out.println(printSelectedMove + getPlayerMove());
                 } else {
                     throw new InvalidMoveSelectionException();
