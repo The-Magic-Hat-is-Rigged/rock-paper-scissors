@@ -58,7 +58,6 @@ public class GameEngine {
                 System.out.println("Invalid number. " + printValidNumRange);
             }
         }
-
     }
 
     public void playGame() {
@@ -88,26 +87,31 @@ public class GameEngine {
             // This will increase the game round counter by one.
             gameDisplayCounter++;
 
+            // String message for displaying and reporting win/lose
+            String resultsMessage = computerPlayer.getName() + " wins the " + gameDisplayCounter + " round!";
+
+            //String message to report current lives after each round of game
+            String currentLives = humanPlayer.getName() + " Lives: " + humanLives + "\n" +
+                    computerPlayer.getName() + " Lives: " + computerLives;
+
             // TODO: See if this can be converted to a Switch Statement later.
 
             // This if block will execute if the human player loses the round and take one away from the humans life pool.
             if (humanPlayer.getPlayerMove().losesTo(computerPlayer.getComputerMove())) {
-                System.out.println(computerPlayer.getName() + " wins the " + gameDisplayCounter + " round!");
+                System.out.println(resultsMessage);
                 humanLives--;
 
                 // This will display the current lives for both human and computer.
-                System.out.println(humanPlayer.getName() + " Lives: " + humanLives);
-                System.out.println(computerPlayer.getName() + " Lives: " + computerLives);
+                System.out.println(currentLives);
             }
 
             // This if block will execute if the computer player loses the round and take one away from the computer life pool.
             else if (computerPlayer.getComputerMove().losesTo(humanPlayer.getPlayerMove())) {
-                System.out.println(humanPlayer.getName() + " wins the " + gameDisplayCounter + " round!");
+                System.out.println(resultsMessage);
                 computerLives--;
 
                 // This will display the current lives for both human and computer.
-                System.out.println(humanPlayer.getName() + " Lives: " + humanLives);
-                System.out.println(computerPlayer.getName() + " Lives: " + computerLives);
+                System.out.println(currentLives);
             }
 
             // The only other option besides win or lose would be tie, in which case no lives will be taken from either the human or computer.
