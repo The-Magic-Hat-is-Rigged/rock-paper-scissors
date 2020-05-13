@@ -9,6 +9,8 @@
 package com.magichatisrigged.javaproject.enginefiles;
 
 import com.magichatisrigged.javaproject.coregamefiles.GameIntroduction;
+import com.magichatisrigged.javaproject.coregamefiles.GameMenu;
+import com.magichatisrigged.javaproject.exceptionfiles.InvalidGameMenuSelectionException;
 import com.magichatisrigged.javaproject.playerfiles.ComputerPlayer;
 import com.magichatisrigged.javaproject.playerfiles.HumanPlayer;
 
@@ -74,6 +76,7 @@ public class AdvancedGameEngine extends GameEngine {
             gameRoundCounter++;
         }
 
+
         // This if else statement will display the final winner of the game based on who has won more rounds.
         if (humanWinCounter > computerWinCounter) {
             System.out.println("\n" + humanPlayer.getName() + " wins the Game!!!!!");
@@ -83,6 +86,8 @@ public class AdvancedGameEngine extends GameEngine {
                     " \\____   (  <_> )  |  /  \\        /|  |   |  \\|\\|\\|\n" +
                     " / ______|\\____/|____/    \\__/\\  / |__|___|  /_____\n" +
                     " \\/                            \\/          \\/\\/\\/\\/");
+
+            this.replayOrReturnToMenu();
         } else {
             System.out.println("\n" + computerPlayer.getName() + " wins the Game!!!!!");
             System.out.println("_____.___.              .____                        \n" +
@@ -91,6 +96,39 @@ public class AdvancedGameEngine extends GameEngine {
                     " \\____   (  <_> )  |  / |    |__(  <_> )___ \\\\  ___/ \n" +
                     " / ______|\\____/|____/  |_______ \\____/____  >\\___  >\n" +
                     " \\/                             \\/         \\/     \\/ ");
+            this.replayOrReturnToMenu();
+        }
+    }
+
+    /*
+     * Advanced Game Replay or Return to Menu method
+     * provides option to return to main menu or repeat game play
+     * after winning or losing a game of advanced Rock, Paper, Scissors
+     */
+    public void replayOrReturnToMenu() {
+        System.out.println("Would you like to replay the game?\n" +
+                "Type Yes to replay, or type Exit to return to menu.");
+        Scanner gameSelection = new Scanner(System.in);
+        boolean isValid = false;
+        while (!(isValid)) {
+            try {
+                switch (gameSelection.nextLine().toUpperCase()) {
+                    case "YES":
+                        this.playGame();
+                        isValid = true;
+                        break;
+                    case "EXIT":
+                        GameMenu gameMenu = new GameMenu();
+                        gameMenu.startGame();
+                        isValid = true;
+                        break;
+                    default:
+                        throw new InvalidGameMenuSelectionException();
+                }
+            }
+            catch(InvalidGameMenuSelectionException e){
+                System.out.println(e.getMessage());
+            }
         }
     }
 
