@@ -4,15 +4,13 @@ import java.util.Scanner;
 
 
 public class GameMenu {
-
-    public enum GameMenuOptions { BASIC, ADVANCED, EXIT }
-    private GameEngine gameEngine = new GameEngine();
-
-
     // This will display the visuals for the game menu.
     public void startGame() {
         boolean isValid = false;
+        BasicGameEngine basicGameEngine = new BasicGameEngine();
+        AdvancedGameEngine advancedGameEngine = new AdvancedGameEngine();
         Scanner userInput = new Scanner(System.in);
+
         System.out.println("_______________________________________________________\n" +
                            "|  Welcome to Rock Paper Scissors, the Java Game!!    |\n" +
                            "|  Please select an option from the choices below:    |\n" +
@@ -20,18 +18,16 @@ public class GameMenu {
                            "|  Play the Basic Game      [Command: Basic]          |\n" +
                            "|  Play the Advanced Game   [Command: Advanced]       |\n" +
                            "|  Exit this Program        [Command: Exit]           |\n" +
-                           "_______________________________________________________\n");
-
+                           "|_____________________________________________________|\n");
         while (!(isValid)) {
             try {
                 switch (userInput.nextLine().toUpperCase()) {
                     case "BASIC":
-                        gameEngine.playGame();
+                        basicGameEngine.playGame();
                         isValid = true;
                         break;
                     case "ADVANCED":
-                        // gameEngine.playAdvancedGame();
-                        System.out.println("This would normally play the advanced game.");
+                        advancedGameEngine.playGame();
                         isValid = true;
                         break;
                     case "EXIT":
