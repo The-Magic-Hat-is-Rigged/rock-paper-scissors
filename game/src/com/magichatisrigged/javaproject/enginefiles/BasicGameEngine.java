@@ -41,7 +41,6 @@ public class BasicGameEngine extends GameEngine {
 
     private void introductionToTheGame() {
         GameIntroduction gameIntroduction = new GameIntroduction();
-        gameIntroduction.welcomeMessage();
         gameIntroduction.basicGameInformation();
     }
 
