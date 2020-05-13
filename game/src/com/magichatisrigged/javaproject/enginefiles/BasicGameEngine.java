@@ -1,3 +1,11 @@
+/*
+ *      The Magic Hat is Rigged (Team 7)
+ *      Bruce West (https://github.com/BruceBAWest)
+ *      RJ Smith (https://github.com/tupleHunden)
+ *      TLG Learning: Java Mini-Project 1
+ *      https://github.com/The-Magic-Hat-is-Rigged/java-project
+ */
+
 package com.magichatisrigged.javaproject.enginefiles;
 
 import com.magichatisrigged.javaproject.playerfiles.ComputerPlayer;
@@ -5,12 +13,6 @@ import com.magichatisrigged.javaproject.playerfiles.HumanPlayer;
 
 import java.util.Scanner;
 
-
-/**
- * Game is the game engine class for the Rock, Paper, Scissors, Lizard, Spock game.
- * This game was created by RJ Smith and Bruce West, and is available on Github:
- *
- */
 public class BasicGameEngine extends GameEngine {
 
     public static final int MIN_GAME_ROUNDS = 1;
