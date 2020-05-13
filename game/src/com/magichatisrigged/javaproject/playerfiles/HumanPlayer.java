@@ -53,17 +53,17 @@ public class HumanPlayer extends Player {
                 switch (userMove.nextLine().toUpperCase()) {
                     case "ROCK":
                         this.playerMove = MoveSelection.ROCK;
-                        System.out.println(getName() + " picked " + getPlayerMove());
+                        displayPlayerMoveChoice();
                         isValid = true;
                         break;
                     case "PAPER":
                         this.playerMove = MoveSelection.PAPER;
-                        System.out.println(getName() + " picked " + getPlayerMove());
+                        displayPlayerMoveChoice();
                         isValid = true;
                         break;
                     case "SCISSORS":
                         this.playerMove = MoveSelection.SCISSORS;
-                        System.out.println(getName() + " picked " + getPlayerMove());
+                        displayPlayerMoveChoice();
                         isValid = true;
                         break;
                     default:
@@ -80,11 +80,11 @@ public class HumanPlayer extends Player {
         // This will prompt the user to select Rock, Paper, or Scissors as their move choice.
         Scanner userMove = new Scanner(System.in);
 
-        // Call printValidMoves
-        System.out.println("Choose Rock, Paper, Scissors, Lizard, or Spock");
-
         // Creates boolean validator for following while loop. this is to validate user input to only enter valid enums
         boolean isValid = false;
+
+        // Call printValidMoves
+        System.out.println("Choose Rock, Paper, Scissors, Lizard, or Spock");
 
         //iterate through the user's moveSelection input
         //if it's rock, paper or scissors, run it and exit loop, if not, ask for a proper move again
@@ -94,27 +94,27 @@ public class HumanPlayer extends Player {
                 switch (userMove.nextLine().toUpperCase()) {
                     case "ROCK":
                         this.playerMove = MoveSelection.ROCK;
-                        System.out.println(getName() + " picked " + getPlayerMove());
+                        displayPlayerMoveChoice();
                         isValid = true;
                         break;
                     case "PAPER":
                         this.playerMove = MoveSelection.PAPER;
-                        System.out.println(getName() + " picked " + getPlayerMove());
+                        displayPlayerMoveChoice();
                         isValid = true;
                         break;
                     case "SCISSORS":
                         this.playerMove = MoveSelection.SCISSORS;
-                        System.out.println(getName() + " picked " + getPlayerMove());
+                        displayPlayerMoveChoice();
                         isValid = true;
                         break;
                     case "LIZARD":
                         this.playerMove = MoveSelection.LIZARD;
-                        System.out.println(getName() + " picked " + getPlayerMove());
+                        displayPlayerMoveChoice();
                         isValid = true;
                         break;
                     case "SPOCK":
                         this.playerMove = MoveSelection.SPOCK;
-                        System.out.println(getName() + " picked " + getPlayerMove());
+                        displayPlayerMoveChoice();
                         isValid = true;
                         break;
                     default:
@@ -126,8 +126,13 @@ public class HumanPlayer extends Player {
         }
     }
 
-    public MoveSelection getPlayerMove () {
-        return playerMove;
+    private void displayPlayerMoveChoice() {
+        System.out.println(getName() + " picked " + getPlayerMove());
+    }
+
+    // Package Private Setter to enable unit testing.
+    protected void setName(String name) {
+        this.name = name;
     }
 
     // Package Private Setter to enable unit testing.
@@ -135,13 +140,11 @@ public class HumanPlayer extends Player {
         this.playerMove = MoveSelection.valueOf(playerMove.toUpperCase());
     }
 
+    public MoveSelection getPlayerMove () {
+        return playerMove;
+    }
 
     public String getName () {
         return name;
-    }
-
-    // Package Private Setter to enable unit testing.
-    protected void setName(String name) {
-        this.name = name;
     }
 }
