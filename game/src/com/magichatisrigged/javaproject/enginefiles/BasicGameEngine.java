@@ -94,16 +94,6 @@ public class BasicGameEngine extends GameEngine {
         humanPlayer.enterName();
         computerPlayer.enterName();
 
-        /*
-         * begin loop for BasicGameEngine playGame method's actual work
-         * this loop, conceptually, should:
-         * 1. start game when playGame is prompted (do/while, with with while condition originally set to default)
-         * 2. when game over, prompt if they want to replay, play advanced game, or exit (to menu)
-         * 3. if user selects replay, begin loop again
-         * 4. if user selects to play advanced game,  -> call advancedGameEngine.playGame();
-         * 4. if user selects exit, return to menu  -> call gameMenu.startGame()
-         */
-
         // The number of lives for both the human and the computer will be based on the user provided input above.
         int humanWinCounter = 0;
         int computerWinCounter = 0;
@@ -157,18 +147,8 @@ public class BasicGameEngine extends GameEngine {
                     " \\/                            \\/          \\/\\/\\/\\/");
 
             System.out.println("Would you like to play the Advanced game?\n" +
-                    "Type Yes to play Advanced Game, anything else to exit the game.");
+                    "Type Yes to play Advanced Game, or type Exit to return to menu.");
             Scanner advancedGameSelection = new Scanner(System.in);
-            switch (advancedGameSelection.nextLine().toUpperCase()) {
-                case "YES":
-                    AdvancedGameEngine advancedGameEngine = new AdvancedGameEngine();
-                    advancedGameEngine.playGame();
-                    break;
-                case "MENU":
-                    GameMenu gameMenu = new GameMenu();
-                    gameMenu.startGame();
-                    break;
-            }
             boolean isValid = false;
             while (!(isValid)) {
                 try {
@@ -178,9 +158,10 @@ public class BasicGameEngine extends GameEngine {
                             advancedGameEngine.playGame();
                             isValid = true;
                             break;
-                        case "MENU":
+                        case "EXIT":
                             GameMenu gameMenu = new GameMenu();
                             gameMenu.startGame();
+                            isValid = true;
                             break;
                         default:
                             throw new InvalidGameMenuSelectionException();
@@ -209,9 +190,10 @@ public class BasicGameEngine extends GameEngine {
                             this.playGame();
                             isValid = true;
                             break;
-                        case "Exit":
+                        case "EXIT":
                             GameMenu gameMenu = new GameMenu();
                             gameMenu.startGame();
+                            isValid = true;
                             break;
                         default:
                             throw new InvalidGameMenuSelectionException();
