@@ -1,15 +1,16 @@
+/*
+ *      The Magic Hat is Rigged (Team 7)
+ *      Bruce West (https://github.com/BruceBAWest)
+ *      RJ Smith (https://github.com/tupleHunden)
+ *      TLG Learning: Java Mini-Project 1
+ *      https://github.com/The-Magic-Hat-is-Rigged/java-project
+ */
+
 package com.magichatisrigged.javaproject.enginefiles;
 
 import java.util.Scanner;
 
-
 public class GameMenu {
-
-
-    public enum GameMenuOptions { BASIC, ADVANCED, EXIT }
-    private BasicGameEngine basicGameEngine = new BasicGameEngine();
-
-
     // This will display the visuals for the game menu.
     public void startGame() {
         boolean isValid = false;
