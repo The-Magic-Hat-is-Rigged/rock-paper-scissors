@@ -78,7 +78,7 @@ public class GameEngine {
         for (int i = 0; i < getNumberOfGameRounds(); i++) {
 
             // This will display which game round is currently in play.
-            System.out.println("----- Round Number: " + getGameRoundCounter() + " -----");
+            System.out.println("\n----- Round Number: " + getGameRoundCounter() + " -----");
 
             // These methods will prompt the user and computer to make their moves.
             humanPlayer.selectMove();
@@ -114,9 +114,9 @@ public class GameEngine {
 
         // This if else statement will display the final winner of the game based on who has won more rounds.
         if (humanWinCounter > computerWinCounter) {
-            System.out.println(humanPlayer.getName() + " wins the Game!!!!!");
+            System.out.println("\n" + humanPlayer.getName() + " wins the Game!!!!!");
         } else {
-            System.out.println(computerPlayer.getName() + " wins the Game!!!!!");
+            System.out.println("\n" + computerPlayer.getName() + " wins the Game!!!!!");
         }
     }
 

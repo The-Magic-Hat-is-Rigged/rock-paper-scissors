@@ -17,7 +17,7 @@ public class HumanPlayer extends Player {
 
         // This will ask the user to provide a username.
         Scanner userInput = new Scanner(System.in);
-        System.out.println("Please enter your name: ");
+        System.out.println("\nPlease enter your name: ");
 
         // This will read the input the user provided and set it as username.
         this.name = userInput.nextLine();
