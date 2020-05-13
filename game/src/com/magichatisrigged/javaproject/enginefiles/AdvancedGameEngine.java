@@ -8,6 +8,7 @@
 
 package com.magichatisrigged.javaproject.enginefiles;
 
+import com.magichatisrigged.javaproject.coregamefiles.GameIntroduction;
 import com.magichatisrigged.javaproject.playerfiles.ComputerPlayer;
 import com.magichatisrigged.javaproject.playerfiles.HumanPlayer;
 

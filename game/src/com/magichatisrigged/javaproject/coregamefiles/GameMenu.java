@@ -6,7 +6,11 @@
  *      https://github.com/The-Magic-Hat-is-Rigged/java-project
  */
 
-package com.magichatisrigged.javaproject.enginefiles;
+package com.magichatisrigged.javaproject.coregamefiles;
+
+import com.magichatisrigged.javaproject.enginefiles.AdvancedGameEngine;
+import com.magichatisrigged.javaproject.enginefiles.BasicGameEngine;
+import com.magichatisrigged.javaproject.exceptionfiles.InvalidGameMenuSelectionException;
 
 import java.util.Scanner;
 

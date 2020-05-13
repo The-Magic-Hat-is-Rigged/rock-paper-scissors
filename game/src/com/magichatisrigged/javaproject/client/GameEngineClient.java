@@ -8,8 +8,7 @@
 
 package com.magichatisrigged.javaproject.client;
 
-import com.magichatisrigged.javaproject.enginefiles.BasicGameEngine;
-import com.magichatisrigged.javaproject.enginefiles.GameMenu;
+import com.magichatisrigged.javaproject.coregamefiles.GameMenu;
 
 /**
  * Welcome to the Rock-Paper-Scissors Game by team 'The Magic Hat is Rigged'.

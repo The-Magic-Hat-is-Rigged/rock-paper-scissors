@@ -1,6 +1,6 @@
 package com.magichatisrigged.javaproject.playerfiles;
 
-import com.magichatisrigged.javaproject.enginefiles.MoveSelection;
+import com.magichatisrigged.javaproject.coregamefiles.MoveSelection;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

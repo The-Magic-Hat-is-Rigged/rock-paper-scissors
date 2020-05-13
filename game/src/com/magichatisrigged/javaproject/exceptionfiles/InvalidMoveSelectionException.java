@@ -6,7 +6,7 @@
  *      https://github.com/The-Magic-Hat-is-Rigged/java-project
  */
 
-package com.magichatisrigged.javaproject.enginefiles;
+package com.magichatisrigged.javaproject.exceptionfiles;
 
 /**
  * Custom exception InvalidMoveSelectionException class extends Exception.

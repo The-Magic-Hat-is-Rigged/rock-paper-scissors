@@ -7,7 +7,7 @@
  */
 
 package com.magichatisrigged.javaproject.playerfiles;
-import com.magichatisrigged.javaproject.enginefiles.MoveSelection;
+import com.magichatisrigged.javaproject.coregamefiles.MoveSelection;
 
 import java.util.ArrayList;
 import java.util.List;
