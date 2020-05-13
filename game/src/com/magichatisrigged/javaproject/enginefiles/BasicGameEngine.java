@@ -24,11 +24,6 @@ public class BasicGameEngine extends GameEngine {
     private int numberOfGameRounds;
     private int gameRoundCounter = 1;
 
-    //allows us to call advanced game when user decides to level up
-    AdvancedGameEngine advancedGameEngine = new AdvancedGameEngine();
-    //allows us to return to menu after playing game, if wanted
-    GameMenu gameMenu = new GameMenu();
-
     /*
      * Constructor methods for GameEngine
      *
@@ -92,83 +87,63 @@ public class BasicGameEngine extends GameEngine {
     public void playGame() {
 
         introductionToTheGame();
+        enterNumberOfGameRounds();
 
         HumanPlayer humanPlayer = new HumanPlayer();
         ComputerPlayer computerPlayer = new ComputerPlayer();
         humanPlayer.enterName();
         computerPlayer.enterName();
 
+        /*
+         * begin loop for BasicGameEngine playGame method's actual work
+         * this loop, conceptually, should:
+         * 1. start game when playGame is prompted (do/while, with with while condition originally set to default)
+         * 2. when game over, prompt if they want to replay, play advanced game, or exit (to menu)
+         * 3. if user selects replay, begin loop again
+         * 4. if user selects to play advanced game,  -> call advancedGameEngine.playGame();
+         * 4. if user selects exit, return to menu  -> call gameMenu.startGame()
+         */
+
         // The number of lives for both the human and the computer will be based on the user provided input above.
         int humanWinCounter = 0;
         int computerWinCounter = 0;
 
-        boolean isValid = false;
-        Scanner userInput = new Scanner(System.in);
-        System.out.println("Type 'PLAY' when ready");
+        // This will loop "n" times based on the number of games the player selected at the start.
+        for (int i = 0; i < getNumberOfGameRounds(); i++) {
 
-        while (!(isValid)) {
-            try {
-                switch (userInput.nextLine().toUpperCase()) {
-                    case "PLAY":
-                        //enter number of rounds
-                        enterNumberOfGameRounds();
+            // This will display which game round is currently in play.
+            System.out.println("\n----- Round Number: " + getGameRoundCounter() + " -----");
 
-                        // This will loop "n" times based on the number of games the player selected at the start.
-                        for (int i = 0; i < getNumberOfGameRounds(); i++) {
+            // These methods will prompt the user and computer to make their moves.
+            humanPlayer.selectMove();
+            computerPlayer.selectMove();
 
-                            // This will display which game round is currently in play.
-                            System.out.println("\n----- Round Number: " + getGameRoundCounter() + " -----");
+            // This if block will execute if the human player loses the round and take one away from the humans life pool.
+            if (humanPlayer.getPlayerMove().losesTo(computerPlayer.getComputerMove())) {
+                System.out.println(computerPlayer.getName() + " wins round " + getGameRoundCounter() + "!");
+                computerWinCounter++;
 
-                            // These methods will prompt the user and computer to make their moves.
-                            humanPlayer.selectMove();
-                            computerPlayer.selectMove();
-
-                            // This if block will execute if the human player loses the round and take one away from the humans life pool.
-                            if (humanPlayer.getPlayerMove().losesTo(computerPlayer.getComputerMove())) {
-                                System.out.println(computerPlayer.getName() + " wins round " + getGameRoundCounter() + "!");
-                                computerWinCounter++;
-
-                                // This will display the current lives for both human and computer.
-                                scoreBoardDisplay(humanPlayer, computerPlayer, humanWinCounter, computerWinCounter);
-                            }
-
-                            // This if block will execute if the computer player loses the round and take one away from the computer life pool.
-                            else if (computerPlayer.getComputerMove().losesTo(humanPlayer.getPlayerMove())) {
-                                System.out.println(humanPlayer.getName() + " wins round " + getGameRoundCounter() + "!");
-                                humanWinCounter++;
-
-                                // This will display the current lives for both human and computer.
-                                scoreBoardDisplay(humanPlayer, computerPlayer, humanWinCounter, computerWinCounter);
-                            }
-
-                            // The only other option besides win or lose would be tie, in which case no lives will be taken from either the human or computer.
-                            else {
-                                System.out.println("Tie! Go again.");
-                                numberOfGameRounds++;
-                            }
-
-                            // This will increase the game round counter by one.
-                            gameRoundCounter++;
-                            isValid = true;
-                        }
-                        break;
-
-                    case "ADVANCED":
-                        advancedGameEngine.playGame();
-                        isValid = true;
-                        break;
-
-                    case "EXIT":
-                        gameMenu.startGame();
-                        isValid = true;
-
-                    default:
-                        throw new InvalidGameMenuSelectionException();
-                }
+                // This will display the current lives for both human and computer.
+                scoreBoardDisplay(humanPlayer, computerPlayer, humanWinCounter, computerWinCounter);
             }
-            catch(InvalidGameMenuSelectionException e){
-                System.out.println(e.getMessage());
+
+            // This if block will execute if the computer player loses the round and take one away from the computer life pool.
+            else if (computerPlayer.getComputerMove().losesTo(humanPlayer.getPlayerMove())) {
+                System.out.println(humanPlayer.getName() + " wins round " + getGameRoundCounter() + "!");
+                humanWinCounter++;
+
+                // This will display the current lives for both human and computer.
+                scoreBoardDisplay(humanPlayer, computerPlayer, humanWinCounter, computerWinCounter);
             }
+
+            // The only other option besides win or lose would be tie, in which case no lives will be taken from either the human or computer.
+            else {
+                System.out.println("Tie! Go again.");
+                numberOfGameRounds++;
+            }
+
+            // This will increase the game round counter by one.
+            gameRoundCounter++;
         }
 
         // This if else statement will display the final winner of the game based on who has won more rounds.
@@ -182,16 +157,38 @@ public class BasicGameEngine extends GameEngine {
                     " \\/                            \\/          \\/\\/\\/\\/");
 
             System.out.println("Would you like to play the Advanced game?\n" +
-                               "Type Yes to continue, anything else to exit the program.");
+                    "Type Yes to play Advanced Game, anything else to exit the game.");
             Scanner advancedGameSelection = new Scanner(System.in);
             switch (advancedGameSelection.nextLine().toUpperCase()) {
                 case "YES":
                     AdvancedGameEngine advancedGameEngine = new AdvancedGameEngine();
                     advancedGameEngine.playGame();
                     break;
-                case "NO":
-                    System.exit(0);
+                case "MENU":
+                    GameMenu gameMenu = new GameMenu();
+                    gameMenu.startGame();
                     break;
+            }
+            boolean isValid = false;
+            while (!(isValid)) {
+                try {
+                    switch (advancedGameSelection.nextLine().toUpperCase()) {
+                        case "YES":
+                            AdvancedGameEngine advancedGameEngine = new AdvancedGameEngine();
+                            advancedGameEngine.playGame();
+                            isValid = true;
+                            break;
+                        case "MENU":
+                            GameMenu gameMenu = new GameMenu();
+                            gameMenu.startGame();
+                            break;
+                        default:
+                            throw new InvalidGameMenuSelectionException();
+                    }
+                }
+                catch(InvalidGameMenuSelectionException e){
+                    System.out.println(e.getMessage());
+                }
             }
         } else {
             System.out.println("\n" + computerPlayer.getName() + " wins the Game!!!!!");
@@ -201,6 +198,29 @@ public class BasicGameEngine extends GameEngine {
                     " \\____   (  <_> )  |  / |    |__(  <_> )___ \\\\  ___/ \n" +
                     " / ______|\\____/|____/  |_______ \\____/____  >\\___  >\n" +
                     " \\/                             \\/         \\/     \\/ ");
+            System.out.println("Would you like to replay the game?\n" +
+                    "Type Yes to replay, or type Exit to return to menu.");
+            Scanner gameSelection = new Scanner(System.in);
+            boolean isValid = false;
+            while (!(isValid)) {
+                try {
+                    switch (gameSelection.nextLine().toUpperCase()) {
+                        case "YES":
+                            this.playGame();
+                            isValid = true;
+                            break;
+                        case "Exit":
+                            GameMenu gameMenu = new GameMenu();
+                            gameMenu.startGame();
+                            break;
+                        default:
+                            throw new InvalidGameMenuSelectionException();
+                    }
+                }
+                catch(InvalidGameMenuSelectionException e){
+                    System.out.println(e.getMessage());
+                }
+            }
         }
     }
 
