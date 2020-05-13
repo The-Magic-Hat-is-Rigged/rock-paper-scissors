@@ -63,7 +63,7 @@ public class ComputerPlayer extends Player {
 //            this.computerMove = MoveSelection.SPOCK;
 //        }
 
-        System.out.println("Computer Player picked: " + getComputerMove());
+        System.out.println("Computer Player picked: " + getComputerMove() + "\n");
     }
 
     @Override
