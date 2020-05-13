@@ -18,15 +18,20 @@ public class ComputerPlayer extends Player {
     private MoveSelection computerMoveSelection = null;
     private MoveSelection computerMove;
 
+    @Override
+    public void enterName() {
+        System.out.println("The computer name is " + getName());
+    }
+
     // This method will randomly select a move for the computer player.
     @Override
     public void selectMove() {
+        Random random = new Random();
         List<MoveSelection> validComputerMoveList = new ArrayList<>();
         validComputerMoveList.add(MoveSelection.ROCK);
         validComputerMoveList.add(MoveSelection.PAPER);
         validComputerMoveList.add(MoveSelection.SCISSORS);
 
-        Random random = new Random();
         for (int i = 0; i < 1; i++) {
             int n = random.nextInt(validComputerMoveList.size());
             computerMoveSelection = validComputerMoveList.get(n);
@@ -50,6 +55,7 @@ public class ComputerPlayer extends Player {
     // This method will randomly select a move for the computer player.
     @Override
     public void selectMoveAdvancedGame() {
+        Random random = new Random();
         List<MoveSelection> validComputerMoveList = new ArrayList<>();
         validComputerMoveList.add(MoveSelection.ROCK);
         validComputerMoveList.add(MoveSelection.PAPER);
@@ -57,7 +63,6 @@ public class ComputerPlayer extends Player {
         validComputerMoveList.add(MoveSelection.LIZARD);
         validComputerMoveList.add(MoveSelection.SPOCK);
 
-        Random random = new Random();
         for (int i = 0; i < 1; i++) {
             int n = random.nextInt(validComputerMoveList.size());
             computerMoveSelection = validComputerMoveList.get(n);
@@ -88,11 +93,6 @@ public class ComputerPlayer extends Player {
 
     private void displayComputerMoveSelection() {
         System.out.println("Computer Player picked: " + getComputerMove() + "\n");
-    }
-
-    @Override
-    public void enterName() {
-        System.out.println("The computer name is " + getName());
     }
 
     public String getName() {
