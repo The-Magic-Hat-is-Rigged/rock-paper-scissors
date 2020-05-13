@@ -8,8 +8,9 @@
 
 package com.magichatisrigged.javaproject.playerfiles;
 
-import com.magichatisrigged.javaproject.enginefiles.MoveSelection;
-import com.magichatisrigged.javaproject.enginefiles.InvalidMoveSelectionException;
+import com.magichatisrigged.javaproject.coregamefiles.MoveSelection;
+import com.magichatisrigged.javaproject.exceptionfiles.InvalidAdvancedMoveSelectionException;
+import com.magichatisrigged.javaproject.exceptionfiles.InvalidMoveSelectionException;
 
 import java.util.Scanner;
 
@@ -117,9 +118,9 @@ public class HumanPlayer extends Player {
                         isValid = true;
                         break;
                     default:
-                        throw new InvalidMoveSelectionException();
+                        throw new InvalidAdvancedMoveSelectionException();
                 }
-            } catch(InvalidMoveSelectionException e){
+            } catch(InvalidAdvancedMoveSelectionException e){
                 System.out.println(e.getMessage());
             }
         }

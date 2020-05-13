@@ -6,7 +6,7 @@
  *      https://github.com/The-Magic-Hat-is-Rigged/java-project
  */
 
-package com.magichatisrigged.javaproject.enginefiles;
+package com.magichatisrigged.javaproject.exceptionfiles;
 
 /**
  * This exception, combined with the while loop, try catch and switch statement in that method,
