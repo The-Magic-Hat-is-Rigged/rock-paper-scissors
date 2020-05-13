@@ -9,7 +9,7 @@
 package com.magichatisrigged.javaproject.enginefiles;
 
 import com.magichatisrigged.javaproject.coregamefiles.GameMenu;
-import com.magichatisrigged.javaproject.exceptionfiles.InvalidGameMenuSelectionException;
+import com.magichatisrigged.javaproject.exceptionfiles.InvalidPostGameSelection;
 import com.magichatisrigged.javaproject.playerfiles.ComputerPlayer;
 import com.magichatisrigged.javaproject.playerfiles.HumanPlayer;
 
@@ -109,10 +109,10 @@ public class BasicGameEngine extends GameEngine {
                             isValid = true;
                             break;
                         default:
-                            throw new InvalidGameMenuSelectionException();
+                            throw new InvalidPostGameSelection();
                     }
                 }
-                catch(InvalidGameMenuSelectionException e){
+                catch(InvalidPostGameSelection e){
                     System.out.println(e.getMessage());
                 }
             }
@@ -142,10 +142,10 @@ public class BasicGameEngine extends GameEngine {
                         isValid = true;
                         break;
                     default:
-                        throw new InvalidGameMenuSelectionException();
+                        throw new InvalidPostGameSelection();
                     }
                 }
-            catch(InvalidGameMenuSelectionException e){
+            catch(InvalidPostGameSelection e){
                 System.out.println(e.getMessage());
             }
         }
