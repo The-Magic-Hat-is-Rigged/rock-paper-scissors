@@ -4,6 +4,12 @@ import java.util.Scanner;
 
 
 public class GameMenu {
+
+
+    public enum GameMenuOptions { BASIC, ADVANCED, EXIT }
+    private BasicGameEngine basicGameEngine = new BasicGameEngine();
+
+
     // This will display the visuals for the game menu.
     public void startGame() {
         boolean isValid = false;
