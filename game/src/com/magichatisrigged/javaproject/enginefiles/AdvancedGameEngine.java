@@ -8,7 +8,6 @@
 
 package com.magichatisrigged.javaproject.enginefiles;
 
-import com.magichatisrigged.javaproject.coregamefiles.GameIntroduction;
 import com.magichatisrigged.javaproject.coregamefiles.GameMenu;
 import com.magichatisrigged.javaproject.exceptionfiles.InvalidGameMenuSelectionException;
 import com.magichatisrigged.javaproject.playerfiles.ComputerPlayer;
@@ -17,22 +16,18 @@ import com.magichatisrigged.javaproject.playerfiles.HumanPlayer;
 import java.util.Scanner;
 
 public class AdvancedGameEngine extends GameEngine {
-
-    public static final int MIN_GAME_ROUNDS = 1;
-    public static final int MAX_GAME_ROUNDS = 50;
-
     private int numberOfGameRounds;
     private int gameRoundCounter = 1;
 
     @Override
     public void playGame() {
-        introductionToTheGame();
-        enterNumberOfGameRounds();
-
         HumanPlayer humanPlayer = new HumanPlayer();
         ComputerPlayer computerPlayer = new ComputerPlayer();
-        humanPlayer.enterName();
-        computerPlayer.enterName();
+        String gameType = "Advanced";
+
+        introductionToTheGame(gameType);
+        enterNumberOfGameRounds();
+        enterNamePrompt(humanPlayer, computerPlayer);
 
         // The number of lives for both the human and the computer will be based on the user provided input above.
         int humanWinCounter = 0;
@@ -52,8 +47,6 @@ public class AdvancedGameEngine extends GameEngine {
             if (humanPlayer.getPlayerMove().losesTo(computerPlayer.getComputerMove())) {
                 System.out.println(computerPlayer.getName() + " wins round " + getGameRoundCounter() + "!");
                 computerWinCounter++;
-
-                // This will display the current lives for both human and computer.
                 scoreBoardDisplay(humanPlayer, computerPlayer, humanWinCounter, computerWinCounter);
             }
 
@@ -61,14 +54,12 @@ public class AdvancedGameEngine extends GameEngine {
             else if (computerPlayer.getComputerMove().losesTo(humanPlayer.getPlayerMove())) {
                 System.out.println(humanPlayer.getName() + " wins round " + getGameRoundCounter() + "!");
                 humanWinCounter++;
-
-                // This will display the current lives for both human and computer.
                 scoreBoardDisplay(humanPlayer, computerPlayer, humanWinCounter, computerWinCounter);
             }
 
             // The only other option besides win or lose would be tie, in which case no lives will be taken from either the human or computer.
             else {
-                System.out.println("Tie! Go again.");
+                tieMatchTextDisplay();
                 numberOfGameRounds++;
             }
 
@@ -76,38 +67,21 @@ public class AdvancedGameEngine extends GameEngine {
             gameRoundCounter++;
         }
 
-
         // This if else statement will display the final winner of the game based on who has won more rounds.
         if (humanWinCounter > computerWinCounter) {
-            System.out.println("\n" + humanPlayer.getName() + " wins the Game!!!!!");
-            System.out.println("_____.___.               __      __.__      ._._._.\n" +
-                    "\\__  |   | ____  __ __  /  \\    /  \\__| ____| | | |\n" +
-                    " /   |   |/  _ \\|  |  \\ \\   \\/\\/   /  |/    \\ | | |\n" +
-                    " \\____   (  <_> )  |  /  \\        /|  |   |  \\|\\|\\|\n" +
-                    " / ______|\\____/|____/    \\__/\\  / |__|___|  /_____\n" +
-                    " \\/                            \\/          \\/\\/\\/\\/");
+            humanWinTextDisplay(humanPlayer);
 
-            this.replayOrReturnToMenu();
-        } else {
-            System.out.println("\n" + computerPlayer.getName() + " wins the Game!!!!!");
-            System.out.println("_____.___.              .____                        \n" +
-                    "\\__  |   | ____  __ __  |    |    ____  ______ ____  \n" +
-                    " /   |   |/  _ \\|  |  \\ |    |   /  _ \\/  ___// __ \\ \n" +
-                    " \\____   (  <_> )  |  / |    |__(  <_> )___ \\\\  ___/ \n" +
-                    " / ______|\\____/|____/  |_______ \\____/____  >\\___  >\n" +
-                    " \\/                             \\/         \\/     \\/ ");
-            this.replayOrReturnToMenu();
         }
+
+        else {
+            humanLoseTextDisplay(computerPlayer);
+        }
+        playAgainPrompt();
     }
 
-    /*
-     * Advanced Game Replay or Return to Menu method
-     * provides option to return to main menu or repeat game play
-     * after winning or losing a game of advanced Rock, Paper, Scissors
-     */
-    public void replayOrReturnToMenu() {
+    private void playAgainPrompt() {
         System.out.println("Would you like to replay the game?\n" +
-                "Type Yes to replay, or type Exit to return to menu.");
+                           "Type Yes to replay, or type Exit to return to menu.");
         Scanner gameSelection = new Scanner(System.in);
         boolean isValid = false;
         while (!(isValid)) {
@@ -132,21 +106,15 @@ public class AdvancedGameEngine extends GameEngine {
         }
     }
 
-    private void introductionToTheGame() {
-        GameIntroduction gameIntroduction = new GameIntroduction();
-        gameIntroduction.advancedGameInformation();
-    }
     private void enterNumberOfGameRounds() {
         Scanner userInput = new Scanner(System.in);
-        String printValidNumRange = "Please enter a number between: " + MIN_GAME_ROUNDS + " and " + MAX_GAME_ROUNDS + ".";
+        boolean isValid = false;
 
         // This will ask the user how many rounds per game they would like to play.
         System.out.println("How many rounds would you like to play this game? \n");
-
-        boolean isValid = false;
+        printValidRange();
 
         while (!(isValid)) {
-            System.out.println(printValidNumRange);
             try {
                 int userInputConvertedFromString = Integer.parseInt(userInput.nextLine());
                 if (userInputConvertedFromString >= MIN_GAME_ROUNDS && userInputConvertedFromString <= MAX_GAME_ROUNDS) {
@@ -155,13 +123,9 @@ public class AdvancedGameEngine extends GameEngine {
                     System.out.println("You will play " + getNumberOfGameRounds() + " rounds this game.");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid number. " + printValidNumRange);
+                System.out.println("Invalid number. " + printValidRange());
             }
         }
-    }
-    private void scoreBoardDisplay(HumanPlayer humanPlayer, ComputerPlayer computerPlayer, int humanWinCounter, int computerWinCounter) {
-        System.out.println(humanPlayer.getName() + " has " + humanWinCounter + " wins so far.");
-        System.out.println(computerPlayer.getName() + " has " + computerWinCounter + " wins so far.");
     }
 
     // Public getter for the number of games.

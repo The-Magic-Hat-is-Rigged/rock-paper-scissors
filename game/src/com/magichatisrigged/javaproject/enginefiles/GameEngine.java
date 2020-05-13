@@ -7,7 +7,6 @@
  */
 
 package com.magichatisrigged.javaproject.enginefiles;
-
-public abstract class GameEngine {
+public abstract class GameEngine extends GameEngineInterface {
     abstract void playGame();
 }
