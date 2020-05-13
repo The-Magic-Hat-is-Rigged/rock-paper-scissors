@@ -11,4 +11,5 @@ package com.magichatisrigged.javaproject.playerfiles;
 public abstract class Player {
     abstract void selectMove();
     abstract void enterName();
+    abstract void selectMoveAdvancedGame();
 }
