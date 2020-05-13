@@ -23,14 +23,14 @@ public class GameEngine {
      * Constructor methods for GameEngine
      *
      */
-
+    //no-op ctor
     public GameEngine() {
         //no-op ctor
     }
 
-    public GameEngine(int numberOfGameRounds, int gameRoundCounter) {
+    //one arg ctor for num of game rounds to play
+    public GameEngine(int numberOfGameRounds) {
         this.numberOfGameRounds = numberOfGameRounds;
-        this.gameRoundCounter = gameRoundCounter;
     }
 
     private void introductionToTheGame() {
