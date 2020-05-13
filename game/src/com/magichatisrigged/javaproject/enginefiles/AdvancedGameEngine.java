@@ -76,8 +76,20 @@ public class AdvancedGameEngine extends GameEngine {
         // This if else statement will display the final winner of the game based on who has won more rounds.
         if (humanWinCounter > computerWinCounter) {
             System.out.println("\n" + humanPlayer.getName() + " wins the Game!!!!!");
+            System.out.println("_____.___.               __      __.__      ._._._.\n" +
+                    "\\__  |   | ____  __ __  /  \\    /  \\__| ____| | | |\n" +
+                    " /   |   |/  _ \\|  |  \\ \\   \\/\\/   /  |/    \\ | | |\n" +
+                    " \\____   (  <_> )  |  /  \\        /|  |   |  \\|\\|\\|\n" +
+                    " / ______|\\____/|____/    \\__/\\  / |__|___|  /_____\n" +
+                    " \\/                            \\/          \\/\\/\\/\\/");
         } else {
             System.out.println("\n" + computerPlayer.getName() + " wins the Game!!!!!");
+            System.out.println("_____.___.              .____                        \n" +
+                    "\\__  |   | ____  __ __  |    |    ____  ______ ____  \n" +
+                    " /   |   |/  _ \\|  |  \\ |    |   /  _ \\/  ___// __ \\ \n" +
+                    " \\____   (  <_> )  |  / |    |__(  <_> )___ \\\\  ___/ \n" +
+                    " / ______|\\____/|____/  |_______ \\____/____  >\\___  >\n" +
+                    " \\/                             \\/         \\/     \\/ ");
         }
     }
 
