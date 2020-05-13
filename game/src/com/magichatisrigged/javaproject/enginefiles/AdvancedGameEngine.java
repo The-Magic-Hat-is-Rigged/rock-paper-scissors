@@ -1,4 +1,5 @@
 /*
+ *      Rock, Paper, Scissors
  *      The Magic Hat is Rigged (Team 7)
  *      Bruce West (https://github.com/BruceBAWest)
  *      RJ Smith (https://github.com/tupleHunden)
@@ -18,6 +19,25 @@ import java.util.Scanner;
 public class AdvancedGameEngine extends GameEngine {
     private int numberOfGameRounds;
     private int gameRoundCounter = 1;
+
+    /*
+     * Constructor methods for GameEngine
+     */
+    //no-op ctor
+    public AdvancedGameEngine() {
+        //no-op ctor
+    }
+
+    //one arg ctor for num of game rounds to play
+    public AdvancedGameEngine(int numberOfGameRounds) {
+        this.numberOfGameRounds = numberOfGameRounds;
+    }
+
+    //two arg ctor for test purposes, tests numOfGames and gameRoundCounter
+    public AdvancedGameEngine(int numberOfGameRounds, int gameRoundCounter) {
+        this.numberOfGameRounds = numberOfGameRounds;
+        this.gameRoundCounter = gameRoundCounter;
+    }
 
     @Override
     public void playGame() {

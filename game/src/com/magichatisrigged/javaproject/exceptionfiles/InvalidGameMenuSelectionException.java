@@ -1,4 +1,5 @@
 /*
+ *      Rock, Paper, Scissors
  *      The Magic Hat is Rigged (Team 7)
  *      Bruce West (https://github.com/BruceBAWest)
  *      RJ Smith (https://github.com/tupleHunden)
