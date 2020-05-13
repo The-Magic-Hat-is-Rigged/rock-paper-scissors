@@ -72,7 +72,18 @@ public class HumanPlayer extends Player {
         return playerMove;
     }
 
+    // Package Private Setter to enable unit testing.
+    protected void setPlayerMove(String playerMove) {
+        this.playerMove = MoveSelection.valueOf(playerMove.toUpperCase());
+    }
+
+
     public String getName () {
         return name;
+    }
+
+    // Package Private Setter to enable unit testing.
+    protected void setName(String name) {
+        this.name = name;
     }
 }
