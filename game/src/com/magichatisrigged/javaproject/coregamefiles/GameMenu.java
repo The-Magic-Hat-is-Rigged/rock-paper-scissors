@@ -22,6 +22,8 @@ public class GameMenu {
         AdvancedGameEngine advancedGameEngine = new AdvancedGameEngine();
         Scanner userInput = new Scanner(System.in);
 
+        WelcomeMessage.welcome();
+
         System.out.println("_______________________________________________________\n" +
                            "|  Welcome to Rock Paper Scissors, the Java Game!!    |\n" +
                            "|  Please select an option from the choices below:    |\n" +
