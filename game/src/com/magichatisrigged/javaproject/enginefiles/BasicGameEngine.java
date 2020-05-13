@@ -92,6 +92,16 @@ public class BasicGameEngine extends GameEngine {
         humanPlayer.enterName();
         computerPlayer.enterName();
 
+        /*
+         * begin loop for BasicGameEngine playGame method's actual work
+         * this loop, conceptually, should:
+         * 1. start game when playGame is prompted (do/while, with with while condition originally set to default)
+         * 2. when game over, prompt if they want to replay, play advanced game, or exit (to menu)
+         * 3. if user selects replay, begin loop again
+         * 4. if user selects to play advanced game,  -> call advancedGameEngine.playGame();
+         * 4. if user selects exit, return to menu  -> call gameMenu.startGame()
+         */
+
         // The number of lives for both the human and the computer will be based on the user provided input above.
         int humanWinCounter = 0;
         int computerWinCounter = 0;
