@@ -8,24 +8,25 @@ import static org.junit.Assert.*;
 
 public class GameEngineTest {
 
+    //set up new game to test
     @Before
     public void setUp() throws Exception {
-        GameEngine gameEngine = new GameEngine();
+        GameEngine gameEngine = new GameEngine(3);
+    }
+
+    @Test
+    public void testPlayGame() {
+    }
+
+    @Test
+    public void testGetNumberOfGameRounds() {
+    }
+
+    @Test
+    public void testGetGameRoundCounter() {
     }
 
     @After
     public void tearDown() throws Exception {
-    }
-
-    @Test
-    public void playGame() {
-    }
-
-    @Test
-    public void getNumberOfGameRounds() {
-    }
-
-    @Test
-    public void getGameRoundCounter() {
     }
 }
