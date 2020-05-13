@@ -9,7 +9,7 @@
 package com.magichatisrigged.javaproject.enginefiles;
 
 import com.magichatisrigged.javaproject.coregamefiles.GameMenu;
-import com.magichatisrigged.javaproject.exceptionfiles.InvalidGameMenuSelectionException;
+import com.magichatisrigged.javaproject.exceptionfiles.InvalidPostGameSelection;
 import com.magichatisrigged.javaproject.playerfiles.ComputerPlayer;
 import com.magichatisrigged.javaproject.playerfiles.HumanPlayer;
 
@@ -70,15 +70,18 @@ public class AdvancedGameEngine extends GameEngine {
         // This if else statement will display the final winner of the game based on who has won more rounds.
         if (humanWinCounter > computerWinCounter) {
             humanWinTextDisplay(humanPlayer);
-
         }
 
         else {
             humanLoseTextDisplay(computerPlayer);
         }
+        //selection prompt to play game again, or return to menu, defined below
         playAgainPrompt();
     }
 
+    /*
+     * playAgainPrompt gives you choide of replaying game, or returning to menu
+     */
     private void playAgainPrompt() {
         System.out.println("Would you like to replay the game?\n" +
                            "Type Yes to replay, or type Exit to return to menu.");
@@ -97,10 +100,10 @@ public class AdvancedGameEngine extends GameEngine {
                         isValid = true;
                         break;
                     default:
-                        throw new InvalidGameMenuSelectionException();
+                        throw new InvalidPostGameSelection();
                 }
             }
-            catch(InvalidGameMenuSelectionException e){
+            catch(InvalidPostGameSelection e){
                 System.out.println(e.getMessage());
             }
         }
