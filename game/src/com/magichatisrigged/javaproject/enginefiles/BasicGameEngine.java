@@ -143,6 +143,19 @@ public class BasicGameEngine extends GameEngine {
                     " \\____   (  <_> )  |  /  \\        /|  |   |  \\|\\|\\|\n" +
                     " / ______|\\____/|____/    \\__/\\  / |__|___|  /_____\n" +
                     " \\/                            \\/          \\/\\/\\/\\/");
+
+            System.out.println("Would you like to play the Advanced game?\n" +
+                               "Type Yes to continue, anything else to exit the program.");
+            Scanner advancedGameSelection = new Scanner(System.in);
+            switch (advancedGameSelection.nextLine().toUpperCase()) {
+                case "YES":
+                    AdvancedGameEngine advancedGameEngine = new AdvancedGameEngine();
+                    advancedGameEngine.playGame();
+                    break;
+                case "NO":
+                    System.exit(0);
+                    break;
+            }
         } else {
             System.out.println("\n" + computerPlayer.getName() + " wins the Game!!!!!");
             System.out.println("_____.___.              .____                        \n" +
