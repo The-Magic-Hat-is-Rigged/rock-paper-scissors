@@ -19,6 +19,20 @@ public class GameEngine {
     private int numberOfGameRounds;
     private int gameRoundCounter = 1;
 
+    /*
+     * Constructor methods for GameEngine
+     *
+     */
+
+    public GameEngine() {
+        //no-op ctor
+    }
+
+    public GameEngine(int numberOfGameRounds, int gameRoundCounter) {
+        this.numberOfGameRounds = numberOfGameRounds;
+        this.gameRoundCounter = gameRoundCounter;
+    }
+
     private void introductionToTheGame() {
         GameIntroduction gameIntroduction = new GameIntroduction();
         gameIntroduction.welcomeMessage();
