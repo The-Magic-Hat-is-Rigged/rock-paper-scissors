@@ -15,14 +15,22 @@ public class GameEngineTest {
     }
 
     @Test
-    public void testGetNumberOfGameRounds() {
+    public void testValidGetNumberOfGameRounds() {
         assertEquals(3, gameEngine.getNumberOfGameRounds());
+    }
+
+    @Test
+    public void testNotValidGetNumberOfGameRounds() {
         assertNotEquals(1, gameEngine.getNumberOfGameRounds());
     }
 
     @Test
-    public void testGetGameRoundCounter() {
+    public void testValidGetGameRoundCounter() {
         assertEquals(1, gameEngine.getGameRoundCounter());
+    }
+
+    @Test
+    public void testNotValidGetGameRoundCounter() {
         assertNotEquals(3, gameEngine.getGameRoundCounter());
     }
 }
