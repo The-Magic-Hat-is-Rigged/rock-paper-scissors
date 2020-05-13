@@ -16,42 +16,22 @@ import java.util.Random;
 public class ComputerPlayer extends Player {
 
     private MoveSelection computerMoveSelection = null;
-    private List<MoveSelection> validComputerMoveList = new ArrayList<>();
     private MoveSelection computerMove;
 
     // This method will randomly select a move for the computer player.
     @Override
     public void selectMove() {
+        List<MoveSelection> validComputerMoveList = new ArrayList<>();
         validComputerMoveList.add(MoveSelection.ROCK);
         validComputerMoveList.add(MoveSelection.PAPER);
         validComputerMoveList.add(MoveSelection.SCISSORS);
 
-        computerRandomLoopSelector();
-        basicGameChoices();
-        displayComputerMoveSelection();
-    }
-
-    // This method will randomly select a move for the computer player.
-    @Override
-    public void selectMoveAdvancedGame() {
-        validComputerMoveList.add(MoveSelection.LIZARD);
-        validComputerMoveList.add(MoveSelection.SPOCK);
-
-        computerRandomLoopSelector();
-        advancedGameChoices();
-        displayComputerMoveSelection();
-    }
-
-    private void computerRandomLoopSelector() {
         Random random = new Random();
         for (int i = 0; i < 1; i++) {
             int n = random.nextInt(validComputerMoveList.size());
             computerMoveSelection = validComputerMoveList.get(n);
         }
-    }
 
-    // This private method will decide the choices for the computer during the basic game.
-    private void basicGameChoices() {
         if (computerMoveSelection.equals(MoveSelection.ROCK)) {
             this.computerMove = MoveSelection.ROCK;
         }
@@ -63,10 +43,26 @@ public class ComputerPlayer extends Player {
         else if (computerMoveSelection.equals(MoveSelection.SCISSORS)) {
             this.computerMove = MoveSelection.SCISSORS;
         }
+
+        displayComputerMoveSelection();
     }
 
-    // This private method will decide the choices for the computer during the advanced game.
-    private void advancedGameChoices() {
+    // This method will randomly select a move for the computer player.
+    @Override
+    public void selectMoveAdvancedGame() {
+        List<MoveSelection> validComputerMoveList = new ArrayList<>();
+        validComputerMoveList.add(MoveSelection.ROCK);
+        validComputerMoveList.add(MoveSelection.PAPER);
+        validComputerMoveList.add(MoveSelection.SCISSORS);
+        validComputerMoveList.add(MoveSelection.LIZARD);
+        validComputerMoveList.add(MoveSelection.SPOCK);
+
+        Random random = new Random();
+        for (int i = 0; i < 1; i++) {
+            int n = random.nextInt(validComputerMoveList.size());
+            computerMoveSelection = validComputerMoveList.get(n);
+        }
+
         if (computerMoveSelection.equals(MoveSelection.LIZARD)) {
             this.computerMove = MoveSelection.LIZARD;
         }
@@ -75,7 +71,19 @@ public class ComputerPlayer extends Player {
             this.computerMove = MoveSelection.SPOCK;
         }
 
-        else basicGameChoices();
+        else if (computerMoveSelection.equals(MoveSelection.ROCK)) {
+            this.computerMove = MoveSelection.ROCK;
+        }
+
+        else if (computerMoveSelection.equals(MoveSelection.PAPER)) {
+            this.computerMove = MoveSelection.PAPER;
+        }
+
+        else if (computerMoveSelection.equals(MoveSelection.SCISSORS)) {
+            this.computerMove = MoveSelection.SCISSORS;
+        }
+
+        displayComputerMoveSelection();
     }
 
     private void displayComputerMoveSelection() {
