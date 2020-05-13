@@ -1,7 +1,5 @@
 package com.magichatisrigged.javaproject.enginefiles;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -26,9 +24,5 @@ public class GameEngineTest {
     public void testGetGameRoundCounter() {
         assertEquals(1, gameEngine.getGameRoundCounter());
         assertNotEquals(3, gameEngine.getGameRoundCounter());
-    }
-
-    @After
-    public void tearDown() throws Exception {
     }
 }
