@@ -10,6 +10,7 @@ public class GameEngineTest {
 
     @Before
     public void setUp() throws Exception {
+        GameEngine gameEngine = new GameEngine();
     }
 
     @After
