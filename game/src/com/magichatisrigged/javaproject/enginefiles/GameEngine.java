@@ -33,6 +33,12 @@ public class GameEngine {
         this.numberOfGameRounds = numberOfGameRounds;
     }
 
+    //two arg ctor for test purposes, tests numOfGames and gameRoundCounter
+    public GameEngine(int numberOfGameRounds, int gameRoundCounter) {
+        this.numberOfGameRounds = numberOfGameRounds;
+        this.gameRoundCounter = gameRoundCounter;
+    }
+
     private void introductionToTheGame() {
         GameIntroduction gameIntroduction = new GameIntroduction();
         gameIntroduction.welcomeMessage();

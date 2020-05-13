@@ -4,15 +4,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class GameEngineTest {
 
-    //set up new game to test
-    @Before
-    public void setUp() throws Exception {
-        GameEngine gameEngine = new GameEngine(3);
-    }
+    //create instance of game
+    private GameEngine gameEngine = new GameEngine(3, 1);
 
     @Test
     public void testPlayGame() {
@@ -20,10 +18,14 @@ public class GameEngineTest {
 
     @Test
     public void testGetNumberOfGameRounds() {
+        assertEquals(3, gameEngine.getNumberOfGameRounds());
+        assertNotEquals(1, gameEngine.getNumberOfGameRounds());
     }
 
     @Test
     public void testGetGameRoundCounter() {
+        assertEquals(1, gameEngine.getGameRoundCounter());
+        assertNotEquals(3, gameEngine.getGameRoundCounter());
     }
 
     @After
