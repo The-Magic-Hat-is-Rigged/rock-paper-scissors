@@ -2,7 +2,7 @@ package com.magichatisrigged.javaproject.coregamefiles;
 
 public class GoodbyeMessage {
 
-    public void goodbye() {
+    public static void goodbye() {
         System.out.println("  ________                  .______.                 \n" +
                 " /  _____/  ____   ____   __| _/\\_ |__ ___.__. ____  \n" +
                 "/   \\  ___ /  _ \\ /  _ \\ / __ |  | __ <   |  |/ __ \\ \n" +

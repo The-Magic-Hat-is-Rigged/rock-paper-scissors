@@ -44,7 +44,7 @@ public class GameMenu {
                     case "EXIT":
                         System.out.println("Goodbye!  Thanks for playing.");
                         isValid = true;
-                        System.exit(0);
+                        GoodbyeMessage.goodbye();
                     default:
                         throw new InvalidGameMenuSelectionException();
                 }
