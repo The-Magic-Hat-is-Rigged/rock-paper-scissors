@@ -1,6 +1,15 @@
+/*
+ *      The Magic Hat is Rigged (Team 7)
+ *      Bruce West (https://github.com/BruceBAWest)
+ *      RJ Smith (https://github.com/tupleHunden)
+ *      TLG Learning: Java Mini-Project 1
+ *      https://github.com/The-Magic-Hat-is-Rigged/java-project
+ */
+
 package com.magichatisrigged.javaproject.client;
 
 import com.magichatisrigged.javaproject.enginefiles.BasicGameEngine;
+import com.magichatisrigged.javaproject.enginefiles.GameMenu;
 
 /**
  * Welcome to the Rock-Paper-Scissors Game by team 'The Magic Hat is Rigged'.
@@ -10,7 +19,8 @@ import com.magichatisrigged.javaproject.enginefiles.BasicGameEngine;
 public class GameEngineClient {
     public static void main(String[] args) {
 
-        BasicGameEngine basicGameEngine = new BasicGameEngine();
-        basicGameEngine.playGame();
+        GameMenu gameMenu = new GameMenu();
+        gameMenu.startGame();
+
     }
 }
