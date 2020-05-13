@@ -19,5 +19,11 @@ public class WelcomeMessage {
                 " /        \\  \\___|  |\\___ \\ \\___ (  <_> |  | \\\\___ \\ \n" +
                 "/_______  /\\___  |__/____  /____  \\____/|__| /____  >\n" +
                 "        \\/     \\/        \\/     \\/                \\/ ");
+
+        System.out.println(" Built by 'The Magic Hat is Rigged' (Team 7)\n" +
+                " Bruce West (https://github.com/BruceBAWest)\n" +
+                " RJ Smith (https://github.com/tupleHunden)\n" +
+                " TLG Learning: Java Mini-Project 1\n" +
+                " https://github.com/The-Magic-Hat-is-Rigged/java-project");
     }
 }
