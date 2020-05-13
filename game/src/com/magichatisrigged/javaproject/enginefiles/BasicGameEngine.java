@@ -21,7 +21,7 @@ public class BasicGameEngine extends GameEngine {
     private int gameRoundCounter = 1;
 
     /*
-     * Constructor methods for GameEngine
+     * Constructor methods for BasicGameEngine
      *
      */
     //no-op ctor
@@ -40,13 +40,24 @@ public class BasicGameEngine extends GameEngine {
         this.gameRoundCounter = gameRoundCounter;
     }
 
+    /*
+     * playGame method does the work!
+     * this BasicGameEngine business method holds the main logic
+     * for running the basic Rock, Paper, Scissors game
+     */
     public void playGame() {
         HumanPlayer humanPlayer = new HumanPlayer();
         ComputerPlayer computerPlayer = new ComputerPlayer();
         String gameType = "Basic";
 
+        // call game introduction method from abstract GameEngine, retrieved from GameIntroduction class
+        // this gives you the option to view the rules of the game
         introductionToTheGame(gameType);
+
+        //enter number of games to play
         enterNumberOfGameRounds();
+
+        //prompts player to enter their name in console
         enterNamePrompt(humanPlayer, computerPlayer);
 
         // The number of lives for both the human and the computer will be based on the user provided input above.
@@ -94,8 +105,10 @@ public class BasicGameEngine extends GameEngine {
             humanWinTextDisplay(humanPlayer);
 
             System.out.println("Would you like to play the Advanced game?\n" +
-                               "Type Yes to play Advanced Game, or type Exit to return to menu.");
+                               "Type Yes to play Advanced Game, or type Exit to return to main menu.");
 
+            //while loop requires you to enter yes to play Advanced Game, or exit to return to main menu
+            //if invalid info entered, player is prompted again
             while (!(isValid)) {
                 try {
                     switch (advancedGameSelection.nextLine().toUpperCase()) {
@@ -118,13 +131,17 @@ public class BasicGameEngine extends GameEngine {
                 }
             }
         }
-
+        //displayes final loser of game
         else {
             humanLoseTextDisplay(computerPlayer);
+            //menu prompt to play again or return to main method
+            //calls playAgainPrompt from below
             playAgainPrompt();
         }
     }
 
+    //while loop requires you to enter yes to play again, or exit to return to main menu
+    //if invalid info entered, player is prompted again
     private void playAgainPrompt() {
         System.out.println("Would you like to replay the game?\n" +
                            "Type Yes to replay, or type Exit to return to menu.");
@@ -152,6 +169,7 @@ public class BasicGameEngine extends GameEngine {
         }
     }
 
+    //method to determine number of rounds to play this game
     private void enterNumberOfGameRounds() {
         Scanner userInput = new Scanner(System.in);
         boolean isValid = false;
@@ -179,6 +197,7 @@ public class BasicGameEngine extends GameEngine {
         return numberOfGameRounds;
     }
 
+    // Public getter for the game round counter
     public int getGameRoundCounter() {
         return gameRoundCounter;
     }
