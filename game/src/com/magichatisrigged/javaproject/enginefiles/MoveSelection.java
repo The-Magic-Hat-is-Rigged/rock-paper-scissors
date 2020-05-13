@@ -51,9 +51,9 @@ public enum MoveSelection {
     // Static ties to list, returns rules for who ties to whom
     static {
         ROCK.tiesWith = Collections.singletonList(ROCK);
-        PAPER.losesTo = Collections.singletonList(PAPER);
+        PAPER.tiesWith = Collections.singletonList(PAPER);
         SCISSORS.tiesWith = Collections.singletonList(SCISSORS);
-        LIZARD.losesTo = Collections.singletonList(LIZARD);
-        SPOCK.losesTo = Collections.singletonList(SPOCK);
+        LIZARD.tiesWith = Collections.singletonList(LIZARD);
+        SPOCK.tiesWith = Collections.singletonList(SPOCK);
     }
 }
