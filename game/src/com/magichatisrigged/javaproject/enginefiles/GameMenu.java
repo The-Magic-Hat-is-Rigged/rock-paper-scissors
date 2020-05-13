@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class GameMenu {
 
     public enum GameMenuOptions { BASIC, ADVANCED, EXIT }
-    private GameEngine gameEngine = new GameEngine();
+    private BasicGameEngine basicGameEngine = new BasicGameEngine();
 
 
     // This will display the visuals for the game menu.
@@ -26,7 +26,7 @@ public class GameMenu {
             try {
                 switch (userInput.nextLine().toUpperCase()) {
                     case "BASIC":
-                        gameEngine.playGame();
+                        basicGameEngine.playGame();
                         isValid = true;
                         break;
                     case "ADVANCED":

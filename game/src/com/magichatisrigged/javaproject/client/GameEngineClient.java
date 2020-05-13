@@ -1,6 +1,6 @@
 package com.magichatisrigged.javaproject.client;
 
-import com.magichatisrigged.javaproject.enginefiles.GameEngine;
+import com.magichatisrigged.javaproject.enginefiles.BasicGameEngine;
 
 /**
  * Welcome to the Rock-Paper-Scissors Game by team 'The Magic Hat is Rigged'.
@@ -10,7 +10,7 @@ import com.magichatisrigged.javaproject.enginefiles.GameEngine;
 public class GameEngineClient {
     public static void main(String[] args) {
 
-        GameEngine gameEngine = new GameEngine();
-        gameEngine.playGame();
+        BasicGameEngine basicGameEngine = new BasicGameEngine();
+        basicGameEngine.playGame();
     }
 }

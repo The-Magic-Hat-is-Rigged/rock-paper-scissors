@@ -5,10 +5,10 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
-public class GameEngineTest {
+public class BasicGameEngineTest {
 
     //create instance of game
-    private GameEngine gameEngine = new GameEngine(3, 1);
+    private BasicGameEngine basicGameEngine = new BasicGameEngine(3, 1);
 
     @Test
     public void testPlayGame() {
@@ -16,21 +16,21 @@ public class GameEngineTest {
 
     @Test
     public void testValidGetNumberOfGameRounds() {
-        assertEquals(3, gameEngine.getNumberOfGameRounds());
+        assertEquals(3, basicGameEngine.getNumberOfGameRounds());
     }
 
     @Test
     public void testNotValidGetNumberOfGameRounds() {
-        assertNotEquals(1, gameEngine.getNumberOfGameRounds());
+        assertNotEquals(1, basicGameEngine.getNumberOfGameRounds());
     }
 
     @Test
     public void testValidGetGameRoundCounter() {
-        assertEquals(1, gameEngine.getGameRoundCounter());
+        assertEquals(1, basicGameEngine.getGameRoundCounter());
     }
 
     @Test
     public void testNotValidGetGameRoundCounter() {
-        assertNotEquals(3, gameEngine.getGameRoundCounter());
+        assertNotEquals(3, basicGameEngine.getGameRoundCounter());
     }
 }
