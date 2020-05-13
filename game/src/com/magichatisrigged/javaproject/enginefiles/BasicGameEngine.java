@@ -16,6 +16,9 @@ import com.magichatisrigged.javaproject.playerfiles.HumanPlayer;
 
 import java.util.Scanner;
 
+/*
+ * BasicGameEngine class runs the basic game
+ */
 public class BasicGameEngine extends GameEngine {
     private int numberOfGameRounds;
     private int gameRoundCounter = 1;

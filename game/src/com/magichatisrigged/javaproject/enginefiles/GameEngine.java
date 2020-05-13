@@ -12,6 +12,10 @@ import com.magichatisrigged.javaproject.coregamefiles.GameIntroduction;
 import com.magichatisrigged.javaproject.playerfiles.ComputerPlayer;
 import com.magichatisrigged.javaproject.playerfiles.HumanPlayer;
 
+/*
+ * Abstract Game Engine Class defines the rules for both
+ * the BasicGameEngine class and AdvancedGameEngine class
+ */
 public abstract class GameEngine {
     public static final int MIN_GAME_ROUNDS = 1;
     public static final int MAX_GAME_ROUNDS = 50;
