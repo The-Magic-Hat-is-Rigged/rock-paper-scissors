@@ -9,6 +9,8 @@
 package com.magichatisrigged.javaproject.enginefiles;
 
 import com.magichatisrigged.javaproject.coregamefiles.GameIntroduction;
+import com.magichatisrigged.javaproject.coregamefiles.GameMenu;
+import com.magichatisrigged.javaproject.exceptionfiles.InvalidGameMenuSelectionException;
 import com.magichatisrigged.javaproject.playerfiles.ComputerPlayer;
 import com.magichatisrigged.javaproject.playerfiles.HumanPlayer;
 
@@ -21,6 +23,11 @@ public class BasicGameEngine extends GameEngine {
 
     private int numberOfGameRounds;
     private int gameRoundCounter = 1;
+
+    //allows us to call advanced game when user decides to level up
+    AdvancedGameEngine advancedGameEngine = new AdvancedGameEngine();
+    //allows us to return to menu after playing game, if wanted
+    GameMenu gameMenu = new GameMenu();
 
     /*
      * Constructor methods for GameEngine
@@ -85,7 +92,6 @@ public class BasicGameEngine extends GameEngine {
     public void playGame() {
 
         introductionToTheGame();
-        enterNumberOfGameRounds();
 
         HumanPlayer humanPlayer = new HumanPlayer();
         ComputerPlayer computerPlayer = new ComputerPlayer();
@@ -96,42 +102,73 @@ public class BasicGameEngine extends GameEngine {
         int humanWinCounter = 0;
         int computerWinCounter = 0;
 
-        // This will loop "n" times based on the number of games the player selected at the start.
-        for (int i = 0; i < getNumberOfGameRounds(); i++) {
+        boolean isValid = false;
+        Scanner userInput = new Scanner(System.in);
+        System.out.println("Type 'PLAY' when ready");
 
-            // This will display which game round is currently in play.
-            System.out.println("\n----- Round Number: " + getGameRoundCounter() + " -----");
+        while (!(isValid)) {
+            try {
+                switch (userInput.nextLine().toUpperCase()) {
+                    case "PLAY":
+                        //enter number of rounds
+                        enterNumberOfGameRounds();
 
-            // These methods will prompt the user and computer to make their moves.
-            humanPlayer.selectMove();
-            computerPlayer.selectMove();
+                        // This will loop "n" times based on the number of games the player selected at the start.
+                        for (int i = 0; i < getNumberOfGameRounds(); i++) {
 
-            // This if block will execute if the human player loses the round and take one away from the humans life pool.
-            if (humanPlayer.getPlayerMove().losesTo(computerPlayer.getComputerMove())) {
-                System.out.println(computerPlayer.getName() + " wins round " + getGameRoundCounter() + "!");
-                computerWinCounter++;
+                            // This will display which game round is currently in play.
+                            System.out.println("\n----- Round Number: " + getGameRoundCounter() + " -----");
 
-                // This will display the current lives for both human and computer.
-                scoreBoardDisplay(humanPlayer, computerPlayer, humanWinCounter, computerWinCounter);
+                            // These methods will prompt the user and computer to make their moves.
+                            humanPlayer.selectMove();
+                            computerPlayer.selectMove();
+
+                            // This if block will execute if the human player loses the round and take one away from the humans life pool.
+                            if (humanPlayer.getPlayerMove().losesTo(computerPlayer.getComputerMove())) {
+                                System.out.println(computerPlayer.getName() + " wins round " + getGameRoundCounter() + "!");
+                                computerWinCounter++;
+
+                                // This will display the current lives for both human and computer.
+                                scoreBoardDisplay(humanPlayer, computerPlayer, humanWinCounter, computerWinCounter);
+                            }
+
+                            // This if block will execute if the computer player loses the round and take one away from the computer life pool.
+                            else if (computerPlayer.getComputerMove().losesTo(humanPlayer.getPlayerMove())) {
+                                System.out.println(humanPlayer.getName() + " wins round " + getGameRoundCounter() + "!");
+                                humanWinCounter++;
+
+                                // This will display the current lives for both human and computer.
+                                scoreBoardDisplay(humanPlayer, computerPlayer, humanWinCounter, computerWinCounter);
+                            }
+
+                            // The only other option besides win or lose would be tie, in which case no lives will be taken from either the human or computer.
+                            else {
+                                System.out.println("Tie! Go again.");
+                                numberOfGameRounds++;
+                            }
+
+                            // This will increase the game round counter by one.
+                            gameRoundCounter++;
+                            isValid = true;
+                        }
+                        break;
+
+                    case "ADVANCED":
+                        advancedGameEngine.playGame();
+                        isValid = true;
+                        break;
+
+                    case "EXIT":
+                        gameMenu.startGame();
+                        isValid = true;
+
+                    default:
+                        throw new InvalidGameMenuSelectionException();
+                }
             }
-
-            // This if block will execute if the computer player loses the round and take one away from the computer life pool.
-            else if (computerPlayer.getComputerMove().losesTo(humanPlayer.getPlayerMove())) {
-                System.out.println(humanPlayer.getName() + " wins round " + getGameRoundCounter() + "!");
-                humanWinCounter++;
-
-                // This will display the current lives for both human and computer.
-                scoreBoardDisplay(humanPlayer, computerPlayer, humanWinCounter, computerWinCounter);
+            catch(InvalidGameMenuSelectionException e){
+                System.out.println(e.getMessage());
             }
-
-            // The only other option besides win or lose would be tie, in which case no lives will be taken from either the human or computer.
-            else {
-                System.out.println("Tie! Go again.");
-                numberOfGameRounds++;
-            }
-
-            // This will increase the game round counter by one.
-            gameRoundCounter++;
         }
 
         // This if else statement will display the final winner of the game based on who has won more rounds.
