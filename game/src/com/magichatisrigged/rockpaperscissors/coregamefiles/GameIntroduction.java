@@ -7,7 +7,7 @@
  *      https://github.com/The-Magic-Hat-is-Rigged/java-project
  */
 
-package com.magichatisrigged.javaproject.coregamefiles;
+package com.magichatisrigged.rockpaperscissors.coregamefiles;
 
 import java.util.Scanner;
 

@@ -7,11 +7,11 @@
  *      https://github.com/The-Magic-Hat-is-Rigged/java-project
  */
 
-package com.magichatisrigged.javaproject.playerfiles;
+package com.magichatisrigged.rockpaperscissors.playerfiles;
 
-import com.magichatisrigged.javaproject.coregamefiles.MoveSelection;
-import com.magichatisrigged.javaproject.exceptionfiles.InvalidAdvancedMoveSelectionException;
-import com.magichatisrigged.javaproject.exceptionfiles.InvalidMoveSelectionException;
+import com.magichatisrigged.rockpaperscissors.coregamefiles.MoveSelection;
+import com.magichatisrigged.rockpaperscissors.exceptionfiles.InvalidAdvancedMoveSelectionException;
+import com.magichatisrigged.rockpaperscissors.exceptionfiles.InvalidMoveSelectionException;
 
 import java.util.Scanner;
 

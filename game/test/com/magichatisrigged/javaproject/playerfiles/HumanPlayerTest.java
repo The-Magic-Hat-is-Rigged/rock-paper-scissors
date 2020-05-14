@@ -9,7 +9,8 @@
 
 package com.magichatisrigged.javaproject.playerfiles;
 
-import com.magichatisrigged.javaproject.coregamefiles.MoveSelection;
+import com.magichatisrigged.rockpaperscissors.coregamefiles.MoveSelection;
+import com.magichatisrigged.rockpaperscissors.playerfiles.HumanPlayer;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

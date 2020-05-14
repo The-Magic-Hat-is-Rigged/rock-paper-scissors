@@ -7,9 +7,9 @@
  *      https://github.com/The-Magic-Hat-is-Rigged/java-project
  */
 
-package com.magichatisrigged.javaproject.client;
+package com.magichatisrigged.rockpaperscissors.client;
 
-import com.magichatisrigged.javaproject.coregamefiles.GameMenu;
+import com.magichatisrigged.rockpaperscissors.coregamefiles.GameMenu;
 
 /**
  * Welcome to the Rock-Paper-Scissors Game by team 'The Magic Hat is Rigged'.

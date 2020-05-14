@@ -6,11 +6,11 @@
  *      https://github.com/The-Magic-Hat-is-Rigged/java-project
  */
 
-package com.magichatisrigged.javaproject.enginefiles;
+package com.magichatisrigged.rockpaperscissors.enginefiles;
 
-import com.magichatisrigged.javaproject.coregamefiles.GameIntroduction;
-import com.magichatisrigged.javaproject.playerfiles.ComputerPlayer;
-import com.magichatisrigged.javaproject.playerfiles.HumanPlayer;
+import com.magichatisrigged.rockpaperscissors.coregamefiles.GameIntroduction;
+import com.magichatisrigged.rockpaperscissors.playerfiles.ComputerPlayer;
+import com.magichatisrigged.rockpaperscissors.playerfiles.HumanPlayer;
 
 /*
  * Abstract Game Engine Class defines the rules for both

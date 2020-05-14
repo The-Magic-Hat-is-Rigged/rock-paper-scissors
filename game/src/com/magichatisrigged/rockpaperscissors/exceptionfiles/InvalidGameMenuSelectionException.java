@@ -7,24 +7,21 @@
  *      https://github.com/The-Magic-Hat-is-Rigged/java-project
  */
 
-package com.magichatisrigged.javaproject.exceptionfiles;
+package com.magichatisrigged.rockpaperscissors.exceptionfiles;
 
 /**
- * Custom exception InvalidMoveSelectionException class extends Exception.
- * This exception validates user input for the com.magichatisrigged.javaproject.playerfiles.HumanPlayer class's
- * selectMove method.
  * This exception, combined with the while loop, try catch and switch statement in that method,
  * ensures users input only strings that – after being parse to all capital letters – are equal to one
- * of the allowed MoveSelection enum items
+ * of the allowed GameMenu enum items
  */
-public class InvalidMoveSelectionException extends Exception {
+public class InvalidGameMenuSelectionException extends Exception {
 
     //ctor
-    public InvalidMoveSelectionException (){
-        super("Invalid move. Please type Rock, Paper or Scissors");
+    public InvalidGameMenuSelectionException (){
+        super("Invalid Menu Choice. Please type Basic, Advanced or Exit");
     }
 
-    public InvalidMoveSelectionException(String message){
+    public InvalidGameMenuSelectionException(String message){
         super(message);
     }
 }

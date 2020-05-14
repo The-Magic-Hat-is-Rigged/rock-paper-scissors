@@ -9,6 +9,7 @@
 
 package com.magichatisrigged.javaproject.enginefiles;
 
+import com.magichatisrigged.rockpaperscissors.enginefiles.BasicGameEngine;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

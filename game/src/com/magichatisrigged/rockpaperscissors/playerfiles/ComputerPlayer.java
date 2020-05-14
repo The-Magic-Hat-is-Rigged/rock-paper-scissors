@@ -7,8 +7,8 @@
  *      https://github.com/The-Magic-Hat-is-Rigged/java-project
  */
 
-package com.magichatisrigged.javaproject.playerfiles;
-import com.magichatisrigged.javaproject.coregamefiles.MoveSelection;
+package com.magichatisrigged.rockpaperscissors.playerfiles;
+import com.magichatisrigged.rockpaperscissors.coregamefiles.MoveSelection;
 
 import java.util.ArrayList;
 import java.util.List;

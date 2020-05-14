@@ -9,6 +9,7 @@
 
 package com.magichatisrigged.javaproject.enginefiles;
 
+import com.magichatisrigged.rockpaperscissors.enginefiles.AdvancedGameEngine;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
