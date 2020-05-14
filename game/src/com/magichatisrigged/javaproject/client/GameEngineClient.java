@@ -18,9 +18,7 @@ import com.magichatisrigged.javaproject.coregamefiles.GameMenu;
  */
 public class GameEngineClient {
     public static void main(String[] args) {
-
         GameMenu gameMenu = new GameMenu();
         gameMenu.startGame();
-
     }
 }
