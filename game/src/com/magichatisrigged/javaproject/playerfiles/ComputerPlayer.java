@@ -15,10 +15,10 @@ import java.util.List;
 import java.util.Random;
 
 public class ComputerPlayer extends Player {
-
     private MoveSelection computerMoveSelection = null;
     private MoveSelection computerMove;
 
+    // This method will display the name of the computer player.
     @Override
     public void enterName() {
         System.out.println("The computer name is " + getName());
@@ -37,19 +37,15 @@ public class ComputerPlayer extends Player {
             int n = random.nextInt(validComputerMoveList.size());
             computerMoveSelection = validComputerMoveList.get(n);
         }
-
         if (computerMoveSelection.equals(MoveSelection.ROCK)) {
             this.computerMove = MoveSelection.ROCK;
         }
-
         else if (computerMoveSelection.equals(MoveSelection.PAPER)) {
             this.computerMove = MoveSelection.PAPER;
         }
-
         else if (computerMoveSelection.equals(MoveSelection.SCISSORS)) {
             this.computerMove = MoveSelection.SCISSORS;
         }
-
         displayComputerMoveSelection();
     }
 
@@ -68,30 +64,25 @@ public class ComputerPlayer extends Player {
             int n = random.nextInt(validComputerMoveList.size());
             computerMoveSelection = validComputerMoveList.get(n);
         }
-
         if (computerMoveSelection.equals(MoveSelection.LIZARD)) {
             this.computerMove = MoveSelection.LIZARD;
         }
-
         else if (computerMoveSelection.equals(MoveSelection.SPOCK)) {
             this.computerMove = MoveSelection.SPOCK;
         }
-
         else if (computerMoveSelection.equals(MoveSelection.ROCK)) {
             this.computerMove = MoveSelection.ROCK;
         }
-
         else if (computerMoveSelection.equals(MoveSelection.PAPER)) {
             this.computerMove = MoveSelection.PAPER;
         }
-
         else if (computerMoveSelection.equals(MoveSelection.SCISSORS)) {
             this.computerMove = MoveSelection.SCISSORS;
         }
-
         displayComputerMoveSelection();
     }
 
+    // This method will display the move the computer player chose.
     private void displayComputerMoveSelection() {
         System.out.println("Computer Player picked: " + getComputerMove() + "\n");
     }

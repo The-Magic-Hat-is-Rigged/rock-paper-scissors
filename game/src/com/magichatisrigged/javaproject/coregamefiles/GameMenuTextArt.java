@@ -1,17 +1,19 @@
-/*
- *      Rock, Paper, Scissors
- *      The Magic Hat is Rigged (Team 7)
- *      Bruce West (https://github.com/BruceBAWest)
- *      RJ Smith (https://github.com/tupleHunden)
- *      TLG Learning: Java Mini-Project 1
- *      https://github.com/The-Magic-Hat-is-Rigged/java-project
- */
-
 package com.magichatisrigged.javaproject.coregamefiles;
 
-public class WelcomeMessage {
+public class GameMenuTextArt extends GameMenu {
 
-    public static void welcome() {
+    static void gameMenuDisplayText() {
+        System.out.println("_______________________________________________________\n" +
+                "|  Welcome to Rock Paper Scissors, the Java Game!!    |\n" +
+                "|  Please select an option from the choices below:    |\n" +
+                "|                                                     |\n" +
+                "|  Play the Basic Game      [Command: Basic]          |\n" +
+                "|  Play the Advanced Game   [Command: Advanced]       |\n" +
+                "|  Exit this Program        [Command: Exit]           |\n" +
+                "|_____________________________________________________|\n");
+    }
+
+    static void welcome() {
         System.out.println("__________               __                          \n" +
                 "\\______   \\ ____   ____ |  | __                      \n" +
                 " |       _//  _ \\_/ ___\\|  |/ /                      \n" +
@@ -34,5 +36,16 @@ public class WelcomeMessage {
                 " RJ Smith (https://github.com/tupleHunden)\n" +
                 " TLG Learning: Java Mini-Project 1\n" +
                 " https://github.com/The-Magic-Hat-is-Rigged/java-project");
+    }
+
+    static void goodbye() {
+        System.out.println("Goodbye!  Thanks for playing.");
+        System.out.println("  ________                  .______.                 \n" +
+                " /  _____/  ____   ____   __| _/\\_ |__ ___.__. ____  \n" +
+                "/   \\  ___ /  _ \\ /  _ \\ / __ |  | __ <   |  |/ __ \\ \n" +
+                "\\    \\_\\  (  <_> |  <_> ) /_/ |  | \\_\\ \\___  \\  ___/ \n" +
+                " \\______  /\\____/ \\____/\\____ |  |___  / ____|\\___  >\n" +
+                "        \\/                   \\/      \\/\\/         \\/ ");
+        System.exit(0);
     }
 }

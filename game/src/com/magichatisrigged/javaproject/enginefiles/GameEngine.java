@@ -12,14 +12,12 @@ import com.magichatisrigged.javaproject.coregamefiles.GameIntroduction;
 import com.magichatisrigged.javaproject.playerfiles.ComputerPlayer;
 import com.magichatisrigged.javaproject.playerfiles.HumanPlayer;
 
-/*
- * Abstract Game Engine Class defines the rules for both
- * the BasicGameEngine class and AdvancedGameEngine class
- */
 public abstract class GameEngine {
 
     abstract void playGame();
 
+    // This method is used to show the basic information for each game, specified by type.
+    // This will be used in both Basic and Advanced Game Engine
     void introductionToTheGame(String gameType) {
         GameIntroduction gameIntroduction = new GameIntroduction();
         if (gameType.equals("Basic")) {
@@ -30,20 +28,28 @@ public abstract class GameEngine {
         }
     }
 
+    // This method will prompt the players for their name selections
+    // This will be used in both Basic and Advanced Game Engine
     void enterNamePrompt(HumanPlayer humanPlayer, ComputerPlayer computerPlayer) {
         humanPlayer.enterName();
         computerPlayer.enterName();
     }
 
+    // This method will display the current scoreboard for both players.
+    // This will be used in both Basic and Advanced Game Engine
     void scoreBoardDisplay(HumanPlayer humanPlayer, ComputerPlayer computerPlayer, int humanWinCounter, int computerWinCounter) {
         System.out.println(humanPlayer.getName() + " has " + humanWinCounter + " wins so far.");
         System.out.println(computerPlayer.getName() + " has " + computerWinCounter + " wins so far.");
     }
 
+    // This method will display the text if there is a tie.
+    // This will be used in both Basic and Advanced Game Engine
     void tieMatchTextDisplay() {
         System.out.println("Tie! Go again.");
     }
 
+    // This method will display the word art when the human player wins the game.
+    // This will be used in both Basic and Advanced Game Engine
     void humanWinTextDisplay(HumanPlayer humanPlayer) {
         System.out.println("\n" + humanPlayer.getName() + " wins the Game!!!!!");
         System.out.println("_____.___.               __      __.__      ._._._.\n" +
@@ -54,6 +60,8 @@ public abstract class GameEngine {
                 " \\/                            \\/          \\/\\/\\/\\/");
     }
 
+    // This method will display the text when the computer player win the game.
+    // This will be used in both Basic and Advanced Game Engine
     void humanLoseTextDisplay(ComputerPlayer computerPlayer) {
         System.out.println("\n" + computerPlayer.getName() + " wins the Game!!!!!");
         System.out.println("_____.___.              .____                        \n" +
@@ -63,5 +71,4 @@ public abstract class GameEngine {
                 " / ______|\\____/|____/  |_______ \\____/____  >\\___  >\n" +
                 " \\/                             \\/         \\/     \\/ ");
     }
-
 }
