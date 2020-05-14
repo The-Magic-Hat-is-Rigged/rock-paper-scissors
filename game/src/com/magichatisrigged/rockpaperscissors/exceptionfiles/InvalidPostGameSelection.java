@@ -7,7 +7,7 @@
  *      https://github.com/The-Magic-Hat-is-Rigged/java-project
  */
 
-package com.magichatisrigged.javaproject.exceptionfiles;
+package com.magichatisrigged.rockpaperscissors.exceptionfiles;
 
 /**
  * Custom exception InvalidPostGameSelection class extends Exception.

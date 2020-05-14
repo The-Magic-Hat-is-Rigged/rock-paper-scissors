@@ -7,7 +7,7 @@
  *      https://github.com/The-Magic-Hat-is-Rigged/java-project
  */
 
-package com.magichatisrigged.javaproject.exceptionfiles;
+package com.magichatisrigged.rockpaperscissors.exceptionfiles;
 
 /**
  * Custom exception InvalidMoveSelectionException class extends Exception.
@@ -17,14 +17,14 @@ package com.magichatisrigged.javaproject.exceptionfiles;
  * ensures users input only strings that – after being parse to all capital letters – are equal to one
  * of the allowed MoveSelection enum items
  */
-public class InvalidAdvancedMoveSelectionException extends Exception {
+public class InvalidMoveSelectionException extends Exception {
 
     //ctor
-    public InvalidAdvancedMoveSelectionException (){
-        super("Invalid move. Please type Rock, Paper, Scissors, Lizard, Spock");
+    public InvalidMoveSelectionException (){
+        super("Invalid move. Please type Rock, Paper or Scissors");
     }
 
-    public InvalidAdvancedMoveSelectionException(String message){
+    public InvalidMoveSelectionException(String message){
         super(message);
     }
 }
