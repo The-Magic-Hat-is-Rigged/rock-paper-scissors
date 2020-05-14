@@ -16,23 +16,25 @@ import com.magichatisrigged.javaproject.exceptionfiles.InvalidGameMenuSelectionE
 import java.util.Scanner;
 
 public class GameMenu {
-    // This will display the visuals for the game menu.
+
+    // This will be the method to start the game.
     public void startGame() {
+        displayMenuText();
+        startGameMenu();
+    }
+
+    // This method will display the welcome messaging and game menu text.
+    private void displayMenuText() {
+        GameMenuTextArt.welcome();
+        GameMenuTextArt.gameMenuDisplayText();
+    }
+
+    // This method will handle all of the user input logic and start the user specified game version.
+    private void startGameMenu() {
         boolean isValid = false;
         BasicGameEngine basicGameEngine = new BasicGameEngine();
         AdvancedGameEngine advancedGameEngine = new AdvancedGameEngine();
         Scanner userInput = new Scanner(System.in);
-
-        WelcomeMessage.welcome();
-
-        System.out.println("_______________________________________________________\n" +
-                           "|  Welcome to Rock Paper Scissors, the Java Game!!    |\n" +
-                           "|  Please select an option from the choices below:    |\n" +
-                           "|                                                     |\n" +
-                           "|  Play the Basic Game      [Command: Basic]          |\n" +
-                           "|  Play the Advanced Game   [Command: Advanced]       |\n" +
-                           "|  Exit this Program        [Command: Exit]           |\n" +
-                           "|_____________________________________________________|\n");
         while (!(isValid)) {
             try {
                 switch (userInput.nextLine().toUpperCase()) {
@@ -45,9 +47,8 @@ public class GameMenu {
                         isValid = true;
                         break;
                     case "EXIT":
-                        System.out.println("Goodbye!  Thanks for playing.");
                         isValid = true;
-                        GoodbyeMessage.goodbye();
+                        GameMenuTextArt.goodbye();
                     default:
                         throw new InvalidGameMenuSelectionException();
                 }
