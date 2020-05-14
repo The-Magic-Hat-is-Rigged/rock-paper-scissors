@@ -24,7 +24,6 @@ public class BasicGameEngine extends GameEngine {
     public static final int MAX_GAME_ROUNDS = 50;
     private int numberOfGameRounds;
     private int gameRoundCounter = 1;
-    String printValidRange;
 
     /*
      * Constructor methods for BasicGameEngine
@@ -175,16 +174,23 @@ public class BasicGameEngine extends GameEngine {
         }
     }
 
-    //method to determine number of rounds to play this game
+    /*
+     * private method for setting the number of games to be played
+     * This integer can be between 1 and 50 game rounds (although, total play count can exceed this in the event of ties).
+     * set between MIN_GAME_ROUNDS && MAX_GAME_ROUNDS
+     * this method is called by the playGame method, set to private because only the play came method can see it.
+     */
     private void enterNumberOfGameRounds() {
-        Scanner userInput = new Scanner(System.in);
-        boolean isValid = false;
-
         // This will ask the user how many rounds per game they would like to play.
         System.out.println("How many rounds would you like to play this game? \n");
-        printValidRange();
-
+        // This will ask how many games the user would like to play.
+        Scanner userInput = new Scanner(System.in);
+        //create reusable string to return when user inputs invalid number of rounds
+        String printValidNumRange = "Please enter a number between: " + MIN_GAME_ROUNDS + " and " + MAX_GAME_ROUNDS + ".";
+        boolean isValid = false;
+        //DONE: explore do/while, if/else to set playCount, so instead of breaking game, player is prompted to select a proper playcount
         while (!(isValid)) {
+            System.out.println(printValidNumRange);
             try {
                 int userInputConvertedFromString = Integer.parseInt(userInput.nextLine());
                 if (userInputConvertedFromString >= MIN_GAME_ROUNDS && userInputConvertedFromString <= MAX_GAME_ROUNDS) {
@@ -193,13 +199,9 @@ public class BasicGameEngine extends GameEngine {
                     System.out.println("You will play " + getNumberOfGameRounds() + " rounds this game.");
                 }
             } catch (NumberFormatException e) {
-                System.out.println(printValidRange());;
+                System.out.println("Invalid number. " + printValidNumRange);
             }
         }
-    }
-
-    public void String printValidRange() {
-        System.out.println("Please enter a number between: " + MIN_GAME_ROUNDS + " and " + MAX_GAME_ROUNDS + ".");
     }
 
     // Public getter for the number of games.
