@@ -21,36 +21,23 @@ public class HumanPlayer extends Player {
     private MoveSelection playerMove;
 
     // This shouldn't need any tests as users can set whatever they want for their username.
-    // If they want to be Elon Musk and do X Æ A-12, sweet.
     @Override
     public void enterName() {
-
-        // This will ask the user to provide a username.
         Scanner userInput = new Scanner(System.in);
         System.out.println("\nPlease enter your name: ");
-
-        // This will read the input the user provided and set it as username.
         this.name = userInput.nextLine();
         System.out.println("Username has been set to: " + getName());
     }
 
+    // This method will prompt the user to select a move from the basic game move choices.
     @Override
     public void selectMove() {
-
-        // This will prompt the user to select Rock, Paper, or Scissors as their move choice.
         Scanner userMove = new Scanner(System.in);
-
-        // Call printValidMoves
         System.out.println("Choose Rock, Paper, or Scissors");
 
-        // Creates boolean validator for following while loop. this is to validate user input to only enter valid enums
         boolean isValid = false;
-
-        //iterate through the user's moveSelection input
-        //if it's rock, paper or scissors, run it and exit loop, if not, ask for a proper move again
         while (!(isValid)) {
             try {
-                // This will parse the user input and verify it was a valid selection.
                 switch (userMove.nextLine().toUpperCase()) {
                     case "ROCK":
                         this.playerMove = MoveSelection.ROCK;
@@ -70,28 +57,22 @@ public class HumanPlayer extends Player {
                     default:
                         throw new InvalidMoveSelectionException();
                 }
-            } catch(InvalidMoveSelectionException e){
+            }
+            catch(InvalidMoveSelectionException e){
                 System.out.println(e.getMessage());
             }
         }
     }
 
+    // This method will prompt the user to select a move from the advanced game move choices.
     @Override
     public void selectMoveAdvancedGame() {
-        // This will prompt the user to select Rock, Paper, or Scissors as their move choice.
         Scanner userMove = new Scanner(System.in);
-
-        // Creates boolean validator for following while loop. this is to validate user input to only enter valid enums
-        boolean isValid = false;
-
-        // Call printValidMoves
         System.out.println("Choose Rock, Paper, Scissors, Lizard, or Spock");
 
-        //iterate through the user's moveSelection input
-        //if it's rock, paper or scissors, run it and exit loop, if not, ask for a proper move again
+        boolean isValid = false;
         while (!(isValid)) {
             try {
-                // This will parse the user input and verify it was a valid selection.
                 switch (userMove.nextLine().toUpperCase()) {
                     case "ROCK":
                         this.playerMove = MoveSelection.ROCK;
@@ -121,30 +102,21 @@ public class HumanPlayer extends Player {
                     default:
                         throw new InvalidAdvancedMoveSelectionException();
                 }
-            } catch(InvalidAdvancedMoveSelectionException e){
+            }
+            catch(InvalidAdvancedMoveSelectionException e){
                 System.out.println(e.getMessage());
             }
         }
     }
 
+    // This method will display the move the human player selected.
     private void displayPlayerMoveChoice() {
         System.out.println(getName() + " picked " + getPlayerMove());
-    }
-
-    // Package Private Setter to enable unit testing.
-    protected void setName(String name) {
-        this.name = name;
-    }
-
-    // Package Private Setter to enable unit testing.
-    protected void setPlayerMove(String playerMove) {
-        this.playerMove = MoveSelection.valueOf(playerMove.toUpperCase());
     }
 
     public MoveSelection getPlayerMove () {
         return playerMove;
     }
-
     public String getName () {
         return name;
     }
