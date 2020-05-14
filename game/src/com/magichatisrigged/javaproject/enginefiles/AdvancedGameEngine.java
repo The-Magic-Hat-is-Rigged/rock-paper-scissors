@@ -17,7 +17,8 @@ import com.magichatisrigged.javaproject.playerfiles.HumanPlayer;
 import java.util.Scanner;
 
 public class AdvancedGameEngine extends GameEngine {
-
+    public static final int MIN_GAME_ROUNDS = 1;
+    public static final int MAX_GAME_ROUNDS = 50;
     private int numberOfGameRounds;
     private int gameRoundCounter = 1;
 
@@ -130,6 +131,7 @@ public class AdvancedGameEngine extends GameEngine {
         }
     }
 
+    //method to determine number of rounds to play this game
     private void enterNumberOfGameRounds() {
         Scanner userInput = new Scanner(System.in);
         boolean isValid = false;
@@ -147,7 +149,7 @@ public class AdvancedGameEngine extends GameEngine {
                     System.out.println("You will play " + getNumberOfGameRounds() + " rounds this game.");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid number. " + printValidRange());
+                System.out.println(printValidRange());;
             }
         }
     }

@@ -17,8 +17,6 @@ import com.magichatisrigged.javaproject.playerfiles.HumanPlayer;
  * the BasicGameEngine class and AdvancedGameEngine class
  */
 public abstract class GameEngine {
-    public static final int MIN_GAME_ROUNDS = 1;
-    public static final int MAX_GAME_ROUNDS = 50;
 
     abstract void playGame();
 
@@ -35,10 +33,6 @@ public abstract class GameEngine {
     void enterNamePrompt(HumanPlayer humanPlayer, ComputerPlayer computerPlayer) {
         humanPlayer.enterName();
         computerPlayer.enterName();
-    }
-
-    String printValidRange() {
-        return "Please enter a number between: " + MIN_GAME_ROUNDS + " and " + MAX_GAME_ROUNDS + ".";
     }
 
     void scoreBoardDisplay(HumanPlayer humanPlayer, ComputerPlayer computerPlayer, int humanWinCounter, int computerWinCounter) {

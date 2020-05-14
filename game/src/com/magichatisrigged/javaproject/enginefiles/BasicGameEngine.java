@@ -20,8 +20,11 @@ import java.util.Scanner;
  * BasicGameEngine class runs the basic game
  */
 public class BasicGameEngine extends GameEngine {
+    public static final int MIN_GAME_ROUNDS = 1;
+    public static final int MAX_GAME_ROUNDS = 50;
     private int numberOfGameRounds;
     private int gameRoundCounter = 1;
+    String printValidRange;
 
     /*
      * Constructor methods for BasicGameEngine
@@ -190,9 +193,13 @@ public class BasicGameEngine extends GameEngine {
                     System.out.println("You will play " + getNumberOfGameRounds() + " rounds this game.");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid number. " + printValidRange());
+                System.out.println(printValidRange());;
             }
         }
+    }
+
+    public void String printValidRange() {
+        System.out.println("Please enter a number between: " + MIN_GAME_ROUNDS + " and " + MAX_GAME_ROUNDS + ".");
     }
 
     // Public getter for the number of games.
