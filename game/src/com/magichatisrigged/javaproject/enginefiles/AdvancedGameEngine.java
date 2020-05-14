@@ -17,6 +17,7 @@ import com.magichatisrigged.javaproject.playerfiles.HumanPlayer;
 import java.util.Scanner;
 
 public class AdvancedGameEngine extends GameEngine {
+
     private int numberOfGameRounds;
     private int gameRoundCounter = 1;
 
@@ -35,7 +36,7 @@ public class AdvancedGameEngine extends GameEngine {
 
     //two arg ctor for test purposes, tests numOfGames and gameRoundCounter
     public AdvancedGameEngine(int numberOfGameRounds, int gameRoundCounter) {
-        this.numberOfGameRounds = numberOfGameRounds;
+        this.setNumberOfGameRounds(numberOfGameRounds);
         this.gameRoundCounter = gameRoundCounter;
     }
 
@@ -157,5 +158,10 @@ public class AdvancedGameEngine extends GameEngine {
     }
     public int getGameRoundCounter() {
         return gameRoundCounter;
+    }
+
+    //Public setter for number of games
+    public void setNumberOfGameRounds(int numberOfGameRounds) {
+        this.numberOfGameRounds = numberOfGameRounds;
     }
 }

@@ -11,6 +11,9 @@ package com.magichatisrigged.javaproject.coregamefiles;
 
 import java.util.Scanner;
 
+/*
+ * Game introduction class creates and defines game introduction test
+ */
 public class GameIntroduction {
 
     public void basicGameInformation() {
