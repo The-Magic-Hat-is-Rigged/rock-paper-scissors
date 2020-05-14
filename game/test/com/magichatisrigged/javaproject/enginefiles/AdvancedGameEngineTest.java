@@ -28,12 +28,6 @@ public class AdvancedGameEngineTest {
     }
 
     @Test
-    public void testSetNumberOfGameRounds() {
-        advancedGameEngine.setNumberOfGameRounds(2);
-        assertEquals(2, advancedGameEngine.getNumberOfGameRounds());
-    }
-
-    @Test
     public void testNotValidGetNumberOfGameRounds() {
         assertNotEquals(1, advancedGameEngine.getNumberOfGameRounds());
     }
