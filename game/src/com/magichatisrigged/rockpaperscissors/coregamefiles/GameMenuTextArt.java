@@ -1,4 +1,4 @@
-package com.magichatisrigged.javaproject.coregamefiles;
+package com.magichatisrigged.rockpaperscissors.coregamefiles;
 
 public class GameMenuTextArt extends GameMenu {
 
