@@ -11,11 +11,9 @@ package com.magichatisrigged.javaproject.coregamefiles;
 
 import java.util.Scanner;
 
-/*
- * Game introduction class creates and defines game introduction test
- */
 public class GameIntroduction {
 
+    // This method will display the basic version of the game's rules and information.
     public void basicGameInformation() {
         welcomeMessage();
         String userInput = ruleDisplaySelection();
@@ -31,6 +29,7 @@ public class GameIntroduction {
         }
     }
 
+    // This method will display the basic version of the game's rules and information.
     public void advancedGameInformation() {
         welcomeMessage();
         String userInput = ruleDisplaySelection();
@@ -47,6 +46,7 @@ public class GameIntroduction {
         }
     }
 
+    // This private method will prompt the user if they want to hear the rules for the game or not.
     private String ruleDisplaySelection() {
         System.out.println("\nWould you like to hear the rules of the game?\n" +
                            "Type Y or Yes to hear the rules.\n" +
@@ -56,11 +56,10 @@ public class GameIntroduction {
         return userInput.nextLine().toUpperCase();
     }
 
+    // This method contains the welcome information text.
     private void welcomeMessage() {
-        // Basic Information about the program
         System.out.println("Welcome to the Rock-Paper-Scissors Game by team 'The Magic Hat is Rigged'.\n" +
                 "This game was developed in Java by Bruce West and RJ Smith, and is available on GitHub.\n" +
                 "https://github.com/The-Magic-Hat-is-Rigged/java-project\n");
     }
-
 }
